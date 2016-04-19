@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,21 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Td-Pm-MI7">
-                                <rect key="frame" x="0.0" y="64" width="600" height="271"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="gW3-BM-5R7" appends="YES" id="Hmy-ZW-0am"/>
-                                </connections>
-                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhH-L7-mYw">
+                                <rect key="frame" x="0.0" y="155" width="114" height="103"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtm-Yp-Yng">
+                                <rect key="frame" x="0.0" y="64" width="595" height="83"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Td-Pm-MI7" secondAttribute="bottom" constant="265" id="DJa-a0-2E6"/>
-                            <constraint firstItem="3Td-Pm-MI7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="RcK-7K-WOG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3Td-Pm-MI7" secondAttribute="trailing" constant="-20" id="SHG-JZ-paC"/>
-                            <constraint firstItem="3Td-Pm-MI7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="taX-5U-eQO"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KBF-tR-vxV"/>
                     <connections>
@@ -46,7 +44,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-580" y="-1700"/>
+            <point key="canvasLocation" x="-538" y="-1537"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="n8Y-mi-IGC">
@@ -59,6 +57,15 @@
                     <view key="view" contentMode="scaleToFill" id="2aP-aE-7P9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Td-Pm-MI7">
+                                <rect key="frame" x="-253" y="8" width="600" height="271"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gW3-BM-5R7" appends="YES" id="Hmy-ZW-0am"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
