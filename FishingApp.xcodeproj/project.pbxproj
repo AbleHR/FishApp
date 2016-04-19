@@ -85,13 +85,13 @@
 			children = (
 				D3E5DBAB1CC04380009438CC /* AppDelegate.swift */,
 				D3E5DBAD1CC04380009438CC /* ViewController.swift */,
+				82E98D451CC6D35900CDC4A7 /* ViewController2.swift */,
+				82E98D471CC6D63F00CDC4A7 /* ViewController3.swift */,
 				D3E5DBAF1CC04380009438CC /* Main.storyboard */,
 				D3E5DBB51CC04380009438CC /* Assets.xcassets */,
 				D3E5DBB71CC04380009438CC /* LaunchScreen.storyboard */,
 				D3E5DBBA1CC04381009438CC /* Info.plist */,
 				D3E5DBB21CC04380009438CC /* FishingApp.xcdatamodeld */,
-				82E98D451CC6D35900CDC4A7 /* ViewController2.swift */,
-				82E98D471CC6D63F00CDC4A7 /* ViewController3.swift */,
 			);
 			path = FishingApp;
 			sourceTree = "<group>";
