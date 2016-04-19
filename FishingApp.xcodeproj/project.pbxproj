@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82E98D461CC6D35900CDC4A7 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E98D451CC6D35900CDC4A7 /* ViewController2.swift */; };
+		82E98D481CC6D63F00CDC4A7 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E98D471CC6D63F00CDC4A7 /* ViewController3.swift */; };
 		D3E5DBAC1CC04380009438CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5DBAB1CC04380009438CC /* AppDelegate.swift */; };
 		D3E5DBAE1CC04380009438CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5DBAD1CC04380009438CC /* ViewController.swift */; };
 		D3E5DBB11CC04380009438CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E5DBAF1CC04380009438CC /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82E98D451CC6D35900CDC4A7 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		82E98D471CC6D63F00CDC4A7 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		D3E5DBA81CC04380009438CC /* FishingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E5DBAB1CC04380009438CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3E5DBAD1CC04380009438CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 				D3E5DBB71CC04380009438CC /* LaunchScreen.storyboard */,
 				D3E5DBBA1CC04381009438CC /* Info.plist */,
 				D3E5DBB21CC04380009438CC /* FishingApp.xcdatamodeld */,
+				82E98D451CC6D35900CDC4A7 /* ViewController2.swift */,
+				82E98D471CC6D63F00CDC4A7 /* ViewController3.swift */,
 			);
 			path = FishingApp;
 			sourceTree = "<group>";
@@ -200,7 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82E98D481CC6D63F00CDC4A7 /* ViewController3.swift in Sources */,
 				D3E5DBB41CC04380009438CC /* FishingApp.xcdatamodeld in Sources */,
+				82E98D461CC6D35900CDC4A7 /* ViewController2.swift in Sources */,
 				D3E5DBAE1CC04380009438CC /* ViewController.swift in Sources */,
 				D3E5DBAC1CC04380009438CC /* AppDelegate.swift in Sources */,
 			);
@@ -392,6 +400,7 @@
 				D3E5DBCA1CC04381009438CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3E5DBCB1CC04381009438CC /* Build configuration list for PBXNativeTarget "FishingAppTests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +409,7 @@
 				D3E5DBCD1CC04381009438CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
