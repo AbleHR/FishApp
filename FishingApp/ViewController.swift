@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 
 class ViewController: UIViewController {
 
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
     
     
     override func viewDidLoad() {
