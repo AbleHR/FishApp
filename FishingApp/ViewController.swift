@@ -8,14 +8,15 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let currentDate = NSDate()
     
+    let locationManager = CLLocationManager()
     
-
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     @IBOutlet weak var Temp: UILabel!
@@ -25,9 +26,6 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var date: UITextField!
-    
-    
-    //this is a tesst
     
     
     
@@ -45,9 +43,13 @@ class ViewController: UIViewController {
         trip.visibility_mi = Visablity.text!
         trip.wind_mph = WindSpeed.text!
         trip.humidity = Humidity.text!
-        
-        //trip.loc_lat = pull from phone
-        //trip.loc_long = pull from phone
+        if CLLocationManager.locationServicesEnabled() {
+            
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            trip.loc_lat = locationManager.location?.coordinate.latitude
+            trip.loc_long = locationManager.location?.coordinate.longitude
+        }
         
         
         
