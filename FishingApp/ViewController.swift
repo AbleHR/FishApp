@@ -43,6 +43,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         trip.visibility_mi = Visablity.text!
         trip.wind_mph = WindSpeed.text!
         trip.humidity = Humidity.text!
+        trip.condition = "test"
         if CLLocationManager.locationServicesEnabled() {
             
             locationManager.delegate = self
