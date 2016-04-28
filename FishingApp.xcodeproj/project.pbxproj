@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		826440EE1CD2B6500013D8AC /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826440ED1CD2B6500013D8AC /* TripTableViewController.swift */; };
+		826440F01CD2B6710013D8AC /* TripTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826440EF1CD2B6710013D8AC /* TripTableCellView.swift */; };
 		82C9E08A1CC9827400C48EEE /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C9E0881CC9827400C48EEE /* Trip+CoreDataProperties.swift */; };
 		82C9E08B1CC9827400C48EEE /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C9E0891CC9827400C48EEE /* Trip.swift */; };
 		82E98D461CC6D35900CDC4A7 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E98D451CC6D35900CDC4A7 /* ViewController2.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		826440ED1CD2B6500013D8AC /* TripTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
+		826440EF1CD2B6710013D8AC /* TripTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableCellView.swift; sourceTree = "<group>"; };
 		82C9E0881CC9827400C48EEE /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		82C9E0891CC9827400C48EEE /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		82E98D451CC6D35900CDC4A7 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				D3E5DBB71CC04380009438CC /* LaunchScreen.storyboard */,
 				D3E5DBBA1CC04381009438CC /* Info.plist */,
 				D3E5DBB21CC04380009438CC /* FishingApp.xcdatamodeld */,
+				826440ED1CD2B6500013D8AC /* TripTableViewController.swift */,
+				826440EF1CD2B6710013D8AC /* TripTableCellView.swift */,
 			);
 			path = FishingApp;
 			sourceTree = "<group>";
@@ -216,8 +222,10 @@
 				82E98D481CC6D63F00CDC4A7 /* ViewController3.swift in Sources */,
 				D3E5DBB41CC04380009438CC /* FishingApp.xcdatamodeld in Sources */,
 				82E98D461CC6D35900CDC4A7 /* ViewController2.swift in Sources */,
+				826440F01CD2B6710013D8AC /* TripTableCellView.swift in Sources */,
 				D3E5DBAE1CC04380009438CC /* ViewController.swift in Sources */,
 				82C9E08B1CC9827400C48EEE /* Trip.swift in Sources */,
+				826440EE1CD2B6500013D8AC /* TripTableViewController.swift in Sources */,
 				D3E5DBAC1CC04380009438CC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
