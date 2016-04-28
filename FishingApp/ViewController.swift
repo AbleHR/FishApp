@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var date: UITextField!
     
     
-    //this is a tesst
+   
     
     
     
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         trip.visibility_mi = Visablity.text!
         trip.wind_mph = WindSpeed.text!
         trip.humidity = Humidity.text!
-        
+        trip.condition = "test"
         //trip.loc_lat = pull from phone
         //trip.loc_long = pull from phone
         
