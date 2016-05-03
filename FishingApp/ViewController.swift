@@ -27,7 +27,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var date: UITextField!
     
-    
+    func errorAlert(sender: AnyObject){
+        var errorAlert = UIAlertController(title: "Error", message: "Failed to save", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default){(ACTION) in print("press ok to continue")
+    }
+    }
     
     
     
@@ -64,11 +69,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }catch let error as NSError {
             
             //tell user that save failed
+            errorAlert(self)
             
         }
         
         
+        //if did save create new cell
         
+        
+    
+    
         
     }
     
