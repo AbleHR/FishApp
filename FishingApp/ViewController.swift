@@ -74,7 +74,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         
-        //if did save create new cell
+        //if did save create new cell in table view
         
         
     

@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+//seque in to next view
+//display data from core data
+
+class TripTableCellView: UITableViewCell{
+
+    
+    @IBOutlet weak var cellDate: UILabel!
+    
+}
