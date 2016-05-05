@@ -25,8 +25,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var Temp: UILabel!
     @IBOutlet weak var Visablity: UILabel!
     @IBOutlet weak var WindSpeed: UILabel!
-    @IBOutlet weak var Humidity: UILabel!
     
+    @IBOutlet weak var Weather: UILabel!
     
     @IBOutlet weak var date: UITextField!
     
@@ -46,7 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         trip.temp = Temp.text!
         trip.visibility_mi = Visablity.text!
         trip.wind_mph = WindSpeed.text!
-        trip.humidity = Humidity.text!
+        trip.weather = Weather.text!
         trip.condition = "test"
         if CLLocationManager.locationServicesEnabled() {
             
@@ -143,6 +143,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     
                     if let level2_weather = level1["weather"] as? String{
                         print(level2_weather)
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                                self.Weather.text = level2_weather
+                            
+                        }
+                        
                     }
                     if let level2_temp = level1["temp_f"] as? Double{
                         print(String(level2_temp) + " F")
