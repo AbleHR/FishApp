@@ -11,5 +11,17 @@ import UIKit
 
 class TripTableViewController: UITableViewController {
     
+    //display cells
+    var TripLabels = [String]()
     
+    
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        
+        
+        
+     //   TripLabels = Tri
+    }
+   
 }
+

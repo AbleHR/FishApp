@@ -65,11 +65,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }catch let error as NSError {
             
             //tell user that save failed
+            errorAlert(self)
             
         }
         
         
+        //if did save create new cell in table view
         
+        
+    
+    
         
     }
     
