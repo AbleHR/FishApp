@@ -19,6 +19,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
+    var weatherJson: NSString = ""
+    var timeInterval = NSDate().timeIntervalSince1970 - 500
+    
     @IBOutlet weak var Temp: UILabel!
     @IBOutlet weak var Visablity: UILabel!
     @IBOutlet weak var WindSpeed: UILabel!
@@ -27,12 +30,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var date: UITextField!
     
-    func errorAlert(sender: AnyObject){
-        var errorAlert = UIAlertController(title: "Error", message: "Failed to save", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default){(ACTION) in print("press ok to continue")
-    }
-    }
+    
+   
     
     
     
@@ -69,7 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }catch let error as NSError {
             
             //tell user that save failed
-            errorAlert(self)
+   //         errorAlert(self)
             
         }
         
@@ -88,15 +87,85 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         //pull from the trip table when the view loads to populate the list ofold trip
         
         
+        self.locationManager.requestAlwaysAuthorization()
         
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
         
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
         
         
         
         print("start")
         
     }
+    
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = (manager.location?.coordinate)!
+        
+        // updates every 5minutes
+        if(NSDate().timeIntervalSince1970 > timeInterval + 300){
+            timeInterval = NSDate().timeIntervalSince1970
+            getWeather(locValue.latitude, long: locValue.longitude)
+        }
+    }
+    
+    func getWeather(lat: Double, long: Double){
+        let newLat = String(lat)
+        let newLong = String(long)
+        
+        let urlString = "https://api.wunderground.com/api/417adfddac32a897/conditions/forecast/alert/q/" + newLat + "," + newLong + ".json"
+        
+        //https://api.wunderground.com/api/417adfddac32a897/conditions/forecast/alert/q/42.6432129,-87.8501127.json
+        
+        let url = NSURL(string: urlString)
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+            //print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+            
+            self.weatherJson = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+            //print(self.weatherJson)
+            
+            var json: [String: AnyObject]
+            do {
+                json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as! [String: AnyObject] //as? Array
+                
+                //let output = json["forecast"]
+                //print(output)
+                
+                if let level1 = json["current_observation"] as? [String: AnyObject] {
+                    
+                    if let level2_weather = level1["weather"] as? String{
+                        print(level2_weather)
+                    }
+                    if let level2_temp = level1["temp_f"] as? Double{
+                        print(String(level2_temp) + " F")
+                        
+                    }
+                    if let level2_windspeed = level1["wind_mph"] as? Double{
+                        print(String(level2_windspeed) + " mph")
+                    }
+                    if let level2_visibility = level1["visibility_mi"] as? String{
+                        print(level2_visibility + " mi")
+                    }
+                    
+                    
+                }
+            }
+            catch {
+                print("No weather data")
+            }
+        }
+        task.resume()
+    }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
