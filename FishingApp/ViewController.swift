@@ -22,9 +22,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var weatherJson: NSString = ""
     var timeInterval = NSDate().timeIntervalSince1970 - 500
     
+
+    @IBOutlet weak var Visibility: UILabel!
     @IBOutlet weak var Temp: UILabel!
-    @IBOutlet weak var Visablity: UILabel!
+
+
     @IBOutlet weak var WindSpeed: UILabel!
+
     
     @IBOutlet weak var Weather: UILabel!
     
@@ -44,7 +48,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         trip.date = currentDate
         trip.temp = Temp.text!
-        trip.visibility_mi = Visablity.text!
+        trip.visibility_mi = Visibility.text!
         trip.wind_mph = WindSpeed.text!
         trip.weather = Weather.text!
         trip.condition = "test"
@@ -153,12 +157,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     if let level2_temp = level1["temp_f"] as? Double{
                         print(String(level2_temp) + " F")
                         
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.Temp.text = String (level2_temp) + " F"
+                            
+                        }
+                        
                     }
                     if let level2_windspeed = level1["wind_mph"] as? Double{
                         print(String(level2_windspeed) + " mph")
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.WindSpeed.text = String (level2_windspeed) + " mph"
+                            
+                        }
                     }
                     if let level2_visibility = level1["visibility_mi"] as? String{
                         print(level2_visibility + " mi")
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.Visibility.text = level2_visibility + " mi"
+                            
+                        }
                     }
                     
                     
