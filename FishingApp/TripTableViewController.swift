@@ -13,15 +13,41 @@ import CoreData
 class TripTableViewController: UITableViewController {
     
     //display cells
-    var TripLabels = [String]()
-    
+    var TripLabels = [NSDate]()
+    var tripRows = [AnyObject]()
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+        
+        let request = NSFetchRequest()
+        request.entity = entityDescription
         
         
+        do{
+            var results = try managedObjectContext.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                
+                for var row in results  {
+                    tripRows.append(row)
+                    if let date = row.date{
+                        TripLabels.append(date!)
+                    }
+                    print(String("hi we made it here" + String(row.date)))
+                    
+                }
+                
+            }else{
+                
+            }
+        } catch let error as NSError{
+            
+        }
         
-     //   TripLabels = Tri
+        
+      // TripLabels =
     }
    
 }

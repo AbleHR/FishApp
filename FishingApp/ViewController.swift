@@ -36,7 +36,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     
-    
     //link to the create new trip button
     @IBAction func saveTrip(sender: AnyObject) {
     let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
@@ -73,8 +72,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         
-        //if did save create new cell in table view
         
+        //call table view controllers  viewdidload?
+        
+        //TripTableViewController.viewDidLoad(<#T##TripTableViewController#>)
         
     
     

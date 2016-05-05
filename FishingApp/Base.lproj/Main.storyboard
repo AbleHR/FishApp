@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-9P-cS4">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="New Trip Button"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="266" width="400" height="30"/>
-                                </variation>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="app name /branding " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtm-Yp-Yng">
                                 <rect key="frame" x="0.0" y="64" width="595" height="83"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -111,26 +104,36 @@
                                     <rect key="frame" x="0.0" y="296" width="400" height="296"/>
                                 </variation>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-9P-cS4">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="New Trip Button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="266" width="400" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="newtrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YYU-D5-zk7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="RFR-9P-cS4"/>
                                 <exclude reference="Jfs-UG-Fh6"/>
                                 <exclude reference="Whv-TY-Jcw"/>
                                 <exclude reference="0Ur-ca-Y7n"/>
                                 <exclude reference="pPa-c3-Eo5"/>
                                 <exclude reference="dT8-nO-PMA"/>
+                                <exclude reference="RFR-9P-cS4"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="RFR-9P-cS4"/>
                                 <include reference="Jfs-UG-Fh6"/>
                                 <include reference="Whv-TY-Jcw"/>
                                 <include reference="0Ur-ca-Y7n"/>
                                 <include reference="pPa-c3-Eo5"/>
                                 <include reference="dT8-nO-PMA"/>
+                                <include reference="RFR-9P-cS4"/>
                             </mask>
                         </variation>
                     </view>
