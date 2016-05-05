@@ -25,6 +25,17 @@ class ViewController2: UIViewController {
         
         mapView.mapType = MKMapType.Hybrid
         
+        mapView.region.center.latitude = 42.645488
+        mapView.region.center.longitude = -87.855060
+        
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let center = mapView.centerCoordinate
+        let region = MKCoordinateRegionMakeWithDistance(center, 2000, 2000)
+        // set region to current region
+        mapView.setRegion(region, animated: true)
+
+        
 
         
     }
@@ -39,5 +50,11 @@ class ViewController2: UIViewController {
         let touchLocation = sender.locationInView(mapView)
         let locationCoordinate = mapView.convertPoint(touchLocation, toCoordinateFromView: mapView)
         print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
+        
+        let fishPin = MKPointAnnotation()
+        fishPin.coordinate.latitude = locationCoordinate.latitude
+        fishPin.coordinate.longitude = locationCoordinate.longitude
+        fishPin.title = "Fish"
+        self.mapView.addAnnotation(fishPin)
     }
 }
