@@ -2,7 +2,7 @@
 //  Trip+CoreDataProperties.swift
 //  FishingApp
 //
-//  Created by Greinke, Matthew M (grein005) on 4/26/16.
+//  Created by Rouse, Able H (rouse013) on 5/5/16.
 //  Copyright © 2016 uwp. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,7 +16,7 @@ extension Trip {
 
     @NSManaged var condition: String?
     @NSManaged var date: NSDate?
-    @NSManaged var humidity: String?
+    @NSManaged var weather: String?
     @NSManaged var loc_lat: NSNumber?
     @NSManaged var loc_long: NSNumber?
     @NSManaged var precip: String?
