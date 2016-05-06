@@ -22,6 +22,7 @@ class ViewController2: UIViewController {
     var lat :Double = 0
     var long :Double = 0
     var date :NSDate = NSDate()
+    
     var timeInterval = NSDate().timeIntervalSince1970
   
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -111,6 +112,8 @@ class ViewController2: UIViewController {
                 destination.date = (match.valueForKey("date") as? NSDate)!
                 destination.length = (match.valueForKey("length") as? Double)!
                 destination.weight = (match.valueForKey("weight") as? Double)!
+                destination.time = (match.valueForKey("weight") as? Double)!
+
 
             } else {
                 
@@ -125,6 +128,7 @@ class ViewController2: UIViewController {
     
     @IBAction func createFish(sender: AnyObject) {
         
+        timeInterval = NSDate().timeIntervalSince1970
         
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
         
@@ -145,7 +149,6 @@ class ViewController2: UIViewController {
         } catch let error as NSError {
             print("errrrr")
         }
-        
         
         
     }
