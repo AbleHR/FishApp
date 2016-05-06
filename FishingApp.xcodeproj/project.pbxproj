@@ -13,6 +13,9 @@
 		82C9E08B1CC9827400C48EEE /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C9E0891CC9827400C48EEE /* Trip.swift */; };
 		82E98D461CC6D35900CDC4A7 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E98D451CC6D35900CDC4A7 /* ViewController2.swift */; };
 		82E98D481CC6D63F00CDC4A7 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E98D471CC6D63F00CDC4A7 /* ViewController3.swift */; };
+		D31B12EC1CDD17D900A8C31D /* fish.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D31B12EB1CDD17D900A8C31D /* fish.jpg */; };
+		D31B12EF1CDD1BDC00A8C31D /* Fish+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B12ED1CDD1BDC00A8C31D /* Fish+CoreDataProperties.swift */; };
+		D31B12F01CDD1BDC00A8C31D /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B12EE1CDD1BDC00A8C31D /* Fish.swift */; };
 		D3E5DBAC1CC04380009438CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5DBAB1CC04380009438CC /* AppDelegate.swift */; };
 		D3E5DBAE1CC04380009438CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5DBAD1CC04380009438CC /* ViewController.swift */; };
 		D3E5DBB11CC04380009438CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E5DBAF1CC04380009438CC /* Main.storyboard */; };
@@ -39,6 +42,9 @@
 		82C9E0891CC9827400C48EEE /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		82E98D451CC6D35900CDC4A7 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		82E98D471CC6D63F00CDC4A7 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		D31B12EB1CDD17D900A8C31D /* fish.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fish.jpg; path = ../../../Desktop/fish.jpg; sourceTree = "<group>"; };
+		D31B12ED1CDD1BDC00A8C31D /* Fish+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fish+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D31B12EE1CDD1BDC00A8C31D /* Fish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
 		D3E5DBA81CC04380009438CC /* FishingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E5DBAB1CC04380009438CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3E5DBAD1CC04380009438CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +79,8 @@
 		D3E5DB9F1CC04380009438CC = {
 			isa = PBXGroup;
 			children = (
+				D31B12ED1CDD1BDC00A8C31D /* Fish+CoreDataProperties.swift */,
+				D31B12EE1CDD1BDC00A8C31D /* Fish.swift */,
 				82C9E0881CC9827400C48EEE /* Trip+CoreDataProperties.swift */,
 				82C9E0891CC9827400C48EEE /* Trip.swift */,
 				D3E5DBAA1CC04380009438CC /* FishingApp */,
@@ -93,6 +101,7 @@
 		D3E5DBAA1CC04380009438CC /* FishingApp */ = {
 			isa = PBXGroup;
 			children = (
+				D31B12EB1CDD17D900A8C31D /* fish.jpg */,
 				D3E5DBAB1CC04380009438CC /* AppDelegate.swift */,
 				D3E5DBAD1CC04380009438CC /* ViewController.swift */,
 				82E98D451CC6D35900CDC4A7 /* ViewController2.swift */,
@@ -199,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3E5DBB91CC04380009438CC /* LaunchScreen.storyboard in Resources */,
+				D31B12EC1CDD17D900A8C31D /* fish.jpg in Resources */,
 				D3E5DBB61CC04380009438CC /* Assets.xcassets in Resources */,
 				D3E5DBB11CC04380009438CC /* Main.storyboard in Resources */,
 			);
@@ -221,9 +231,11 @@
 				82C9E08A1CC9827400C48EEE /* Trip+CoreDataProperties.swift in Sources */,
 				82E98D481CC6D63F00CDC4A7 /* ViewController3.swift in Sources */,
 				D3E5DBB41CC04380009438CC /* FishingApp.xcdatamodeld in Sources */,
+				D31B12EF1CDD1BDC00A8C31D /* Fish+CoreDataProperties.swift in Sources */,
 				82E98D461CC6D35900CDC4A7 /* ViewController2.swift in Sources */,
 				826440F01CD2B6710013D8AC /* TripTableCellView.swift in Sources */,
 				D3E5DBAE1CC04380009438CC /* ViewController.swift in Sources */,
+				D31B12F01CDD1BDC00A8C31D /* Fish.swift in Sources */,
 				82C9E08B1CC9827400C48EEE /* Trip.swift in Sources */,
 				826440EE1CD2B6500013D8AC /* TripTableViewController.swift in Sources */,
 				D3E5DBAC1CC04380009438CC /* AppDelegate.swift in Sources */,

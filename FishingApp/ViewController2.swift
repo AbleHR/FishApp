@@ -17,9 +17,12 @@ class ViewController2: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    let locationManager = CLLocationManager()
+    
     var lat :Double = 0
     var long :Double = 0
     var date :NSDate = NSDate()
+    var timeInterval = NSDate().timeIntervalSince1970
   
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
@@ -81,6 +84,73 @@ class ViewController2: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
 }
+    
+    
+    
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?, time: Double){
+        let destination = segue.destinationViewController as! ViewController3
+        
+        
+        let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
+        
+        let request = NSFetchRequest()
+        request.entity = entityDescription
+        
+        let pred = NSPredicate(format: " (time_stamp = %@)",time )
+        request.predicate = pred
+        
+        do {
+            var results = try managedObjectContext.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                let match = results[0] as! NSManagedObject
+                destination.species = (match.valueForKey("species") as? String)!
+                destination.long = (match.valueForKey("loc_long") as? Double)!
+                destination.lat = (match.valueForKey("loc_lat") as? Double)!
+                destination.date = (match.valueForKey("date") as? NSDate)!
+                destination.length = (match.valueForKey("length") as? Double)!
+                destination.weight = (match.valueForKey("weight") as? Double)!
+
+            } else {
+                
+            }
+        } catch let error as NSError {
+            print(error.localizedFailureReason)
+        }
+        
+        
+    }
+    
+    
+    @IBAction func createFish(sender: AnyObject) {
+        
+        
+        let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
+        
+        let fish = Fish(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+        fish.date = date
+        fish.loc_lat = locationManager.location?.coordinate.latitude
+        fish.loc_long = locationManager.location?.coordinate.longitude
+        fish.length = 2
+        fish.weight = 3
+        fish.species = "fish2"
+        fish.time_stamp = timeInterval
+        fish.photo = ""
+        
+        
+        do {
+            try managedObjectContext.save()
+            
+        } catch let error as NSError {
+            print("errrrr")
+        }
+        
+        
+        
+    }
+    
+    
     
     @IBAction func getLongPressCoordinates(sender: UILongPressGestureRecognizer) {
         if sender.state != UIGestureRecognizerState.Began { return }
