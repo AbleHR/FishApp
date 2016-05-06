@@ -77,9 +77,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         
         
-        //call table view controllers  viewdidload?
+        //reload tableview
         
-        //TripTableViewController.viewDidLoad(<#T##TripTableViewController#>)
+        
         
     
     
