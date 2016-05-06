@@ -100,8 +100,8 @@
 				D3E5DBAF1CC04380009438CC /* Main.storyboard */,
 				D3E5DBB51CC04380009438CC /* Assets.xcassets */,
 				D3E5DBB71CC04380009438CC /* LaunchScreen.storyboard */,
-				D3E5DBBA1CC04381009438CC /* Info.plist */,
 				D3E5DBB21CC04380009438CC /* FishingApp.xcdatamodeld */,
+				D3E5DBBA1CC04381009438CC /* Info.plist */,
 				826440ED1CD2B6500013D8AC /* TripTableViewController.swift */,
 				826440EF1CD2B6710013D8AC /* TripTableCellView.swift */,
 			);

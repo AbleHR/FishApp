@@ -32,17 +32,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var Weather: UILabel!
     
-    @IBOutlet weak var date: UITextField!
+    //@IBOutlet weak var date: UITextField!
     
     
    
     
-    
-    
-    
-    //link to the create new trip button
-    @IBAction func saveTrip(sender: AnyObject) {
-    let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+  
+    @IBAction func savetodb(sender: AnyObject) {
+        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
         let trip = Trip(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
         
         trip.date = currentDate
@@ -69,25 +66,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             try managedObjectContext.save()
             
         }catch let error as NSError {
-            
+            print("failed to save \(error) ")
             //tell user that save failed
-   //         errorAlert(self)
+            //         errorAlert(self)
             
         }
         
         
         
-        //call table view controllers  viewdidload?
+        //tell triptableview to reload
         
-        //TripTableViewController.viewDidLoad(<#T##TripTableViewController#>)
         
-    
-    
+        //NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
+        
+        
+        
+        
+        
+        
+        
         
     }
     
+    
+    
+    //link to the create new trip button
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         //pull from the trip table when the view loads to populate the list ofold trip
         

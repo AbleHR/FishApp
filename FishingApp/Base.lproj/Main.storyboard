@@ -63,6 +63,17 @@
                                     <rect key="frame" x="282" y="155" width="118" height="103"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zng-dE-OFv">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="new trip"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="8" y="258" width="392" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="Savetriptodb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TD8-bX-EYS"/>
+                                    <action selector="savetodb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ro-fW-ldv"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dT8-nO-PMA" customClass="TripTableViewController">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,16 +115,6 @@
                                     <rect key="frame" x="0.0" y="296" width="400" height="296"/>
                                 </variation>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-9P-cS4">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="New Trip Button"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="266" width="400" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="newtrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YYU-D5-zk7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -122,8 +123,8 @@
                                 <exclude reference="Whv-TY-Jcw"/>
                                 <exclude reference="0Ur-ca-Y7n"/>
                                 <exclude reference="pPa-c3-Eo5"/>
+                                <exclude reference="Zng-dE-OFv"/>
                                 <exclude reference="dT8-nO-PMA"/>
-                                <exclude reference="RFR-9P-cS4"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -132,8 +133,8 @@
                                 <include reference="Whv-TY-Jcw"/>
                                 <include reference="0Ur-ca-Y7n"/>
                                 <include reference="pPa-c3-Eo5"/>
+                                <include reference="Zng-dE-OFv"/>
                                 <include reference="dT8-nO-PMA"/>
-                                <include reference="RFR-9P-cS4"/>
                             </mask>
                         </variation>
                     </view>
