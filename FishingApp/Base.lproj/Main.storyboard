@@ -63,7 +63,27 @@
                                     <rect key="frame" x="282" y="155" width="118" height="103"/>
                                 </variation>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dT8-nO-PMA" customClass="TripTableViewController">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-9P-cS4">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="New Trip Button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="266" width="400" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="newtrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YYU-D5-zk7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pac-ll-Tad">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="302" y="266" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="dXq-xH-BiC" kind="presentation" id="g43-LC-DyU"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dT8-nO-PMA">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -101,29 +121,9 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="296" width="400" height="296"/>
+                                    <rect key="frame" x="0.0" y="304" width="400" height="296"/>
                                 </variation>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-9P-cS4">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="New Trip Button"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="266" width="400" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="newtrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YYU-D5-zk7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pac-ll-Tad">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="302" y="266" width="46" height="30"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="dXq-xH-BiC" kind="presentation" id="g43-LC-DyU"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -132,9 +132,9 @@
                                 <exclude reference="Whv-TY-Jcw"/>
                                 <exclude reference="0Ur-ca-Y7n"/>
                                 <exclude reference="pPa-c3-Eo5"/>
-                                <exclude reference="dT8-nO-PMA"/>
                                 <exclude reference="RFR-9P-cS4"/>
                                 <exclude reference="pac-ll-Tad"/>
+                                <exclude reference="dT8-nO-PMA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -143,9 +143,9 @@
                                 <include reference="Whv-TY-Jcw"/>
                                 <include reference="0Ur-ca-Y7n"/>
                                 <include reference="pPa-c3-Eo5"/>
-                                <include reference="dT8-nO-PMA"/>
                                 <include reference="RFR-9P-cS4"/>
                                 <include reference="pac-ll-Tad"/>
+                                <include reference="dT8-nO-PMA"/>
                             </mask>
                         </variation>
                     </view>
