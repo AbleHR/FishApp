@@ -15,8 +15,7 @@ import CoreLocation
 class ViewController3: UIViewController {
     
     
-    @IBOutlet weak var length_label: UILabel!
-    @IBOutlet weak var weight_label: UILabel!
+
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
@@ -27,6 +26,7 @@ class ViewController3: UIViewController {
     var length :Double = 0
     var weight :Double = 0
     var date :NSDate = NSDate()
+    var time :Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

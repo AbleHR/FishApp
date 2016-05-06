@@ -184,7 +184,7 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="253" y="308" width="101" height="30"/>
+                                    <rect key="frame" x="256" y="418" width="101" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="createFish:" destination="dXq-xH-BiC" eventType="touchUpInside" id="Rt4-px-J8B"/>
@@ -241,25 +241,7 @@
                                     <rect key="frame" x="80" y="184" width="210" height="127"/>
                                 </variation>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFc-El-W9E">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="28" y="363" width="42" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgh-i6-EPc">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="28" y="403" width="42" height="21"/>
-                                </variation>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cjx-be-b1b">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="cjx-be-b1b" userLabel="Length Slider">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="103" y="354" width="118" height="31"/>
@@ -269,7 +251,7 @@
                                     <action selector="setLength:" destination="i7r-VL-cPR" eventType="valueChanged" id="YBp-pD-qcJ"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ee3-E9-LEe">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ee3-E9-LEe" userLabel="Weight Slider">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="103" y="394" width="118" height="31"/>
@@ -295,37 +277,49 @@
                                     <rect key="frame" x="80" y="20" width="240" height="128"/>
                                 </variation>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="length" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLl-S8-K1w">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="15" y="358" width="60" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaY-cf-g35">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="15" y="398" width="53" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="jx9-oR-4gX"/>
-                                <exclude reference="kFc-El-W9E"/>
-                                <exclude reference="pgh-i6-EPc"/>
                                 <exclude reference="cjx-be-b1b"/>
                                 <exclude reference="ee3-E9-LEe"/>
                                 <exclude reference="H6V-1d-bQf"/>
                                 <exclude reference="aZF-Tf-PLV"/>
+                                <exclude reference="cLl-S8-K1w"/>
+                                <exclude reference="WaY-cf-g35"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="jx9-oR-4gX"/>
-                                <include reference="kFc-El-W9E"/>
-                                <include reference="pgh-i6-EPc"/>
                                 <include reference="cjx-be-b1b"/>
                                 <include reference="ee3-E9-LEe"/>
                                 <include reference="H6V-1d-bQf"/>
                                 <include reference="aZF-Tf-PLV"/>
+                                <include reference="cLl-S8-K1w"/>
+                                <include reference="WaY-cf-g35"/>
                             </mask>
                         </variation>
                     </view>
-                    <connections>
-                        <outlet property="length_label" destination="pgh-i6-EPc" id="oWd-F4-d32"/>
-                        <outlet property="size_label" destination="kFc-El-W9E" id="0co-9H-K0V"/>
-                        <outlet property="weight" destination="pgh-i6-EPc" id="o3I-2R-Ptw"/>
-                        <outlet property="weight_label" destination="pgh-i6-EPc" id="GN5-zt-5sc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za3-0f-srY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
