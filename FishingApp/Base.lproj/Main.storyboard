@@ -230,4 +230,7 @@
             <point key="canvasLocation" x="-1024" y="-792"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="g43-LC-DyU"/>
+    </inferredMetricsTieBreakers>
 </document>
