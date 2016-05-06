@@ -105,6 +105,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         
         
+        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+        let trip = Trip(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+        trip.loc_lat = 40
+        trip.loc_long = 40
+        trip.date = NSDate()
+        trip.weather = "hi"
+        trip.visibility_mi = "vis"
+        trip.wind_mph = "5000"
+        trip.precip = " this"
+        trip.condition = "great"
+        
+        do {
+            try managedObjectContext.save()
+            
+        } catch let error as NSError {
+            print("errrrr")
+        }
+        
+        
         print("start")
         
     }
@@ -197,6 +216,41 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?, date: NSDate){
+            let destination = segue.destinationViewController as! ViewController2
+            destination.lat = 40
+            destination.long = 20
+            
+            
+            let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+            
+            let request = NSFetchRequest()
+            request.entity = entityDescription
+            
+            let pred = NSPredicate(format: " (date = %@)",date )
+            request.predicate = pred
+        
+        do {
+            var results = try managedObjectContext.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                let match = results[0] as! NSManagedObject
+                    destination.lat = (match.valueForKey("loc_lat") as? Double)!
+                    destination.long = (match.valueForKey("loc_long") as? Double)!
+                    destination.date = (match.valueForKey("date") as? NSDate)!
+            } else {
+                
+            }
+        } catch let error as NSError {
+            print(error.localizedFailureReason)
+        }
+        
+            
+            
+            
+    }
+
 
 
     

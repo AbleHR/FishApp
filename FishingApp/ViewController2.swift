@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreData
+import CoreLocation
 
 
 class ViewController2: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    var lat :Double = 0
+    var long :Double = 0
+    var date :NSDate = NSDate()
   
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +33,8 @@ class ViewController2: UIViewController {
         
         mapView.mapType = MKMapType.Hybrid
         
-        mapView.region.center.latitude = 42.645488
-        mapView.region.center.longitude = -87.855060
+        mapView.region.center.latitude = lat
+        mapView.region.center.longitude = long
         
         mapView.removeAnnotations(mapView.annotations)
         
@@ -34,6 +42,35 @@ class ViewController2: UIViewController {
         let region = MKCoordinateRegionMakeWithDistance(center, 2000, 2000)
         // set region to current region
         mapView.setRegion(region, animated: true)
+
+        
+        
+        let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
+        
+        let request = NSFetchRequest()
+        request.entity = entityDescription
+        
+        let pred = NSPredicate(format: " (date = %@)", date )
+        request.predicate = pred
+        
+        do {
+            var results = try managedObjectContext.executeFetchRequest(request)
+            
+            if results.count > 0 {
+         
+                for index in 0...results.count {
+                    let match = results[index] as! NSManagedObject
+                    
+                    
+                    
+                }
+                
+            } else {
+                
+            }
+        } catch let error as NSError {
+            print(error.localizedFailureReason)
+        }
 
         
 

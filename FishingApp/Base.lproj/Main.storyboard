@@ -114,6 +114,16 @@
                                     <action selector="newtrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YYU-D5-zk7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pac-ll-Tad">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="302" y="266" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="dXq-xH-BiC" kind="presentation" id="g43-LC-DyU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -124,6 +134,7 @@
                                 <exclude reference="pPa-c3-Eo5"/>
                                 <exclude reference="dT8-nO-PMA"/>
                                 <exclude reference="RFR-9P-cS4"/>
+                                <exclude reference="pac-ll-Tad"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -134,6 +145,7 @@
                                 <include reference="pPa-c3-Eo5"/>
                                 <include reference="dT8-nO-PMA"/>
                                 <include reference="RFR-9P-cS4"/>
+                                <include reference="pac-ll-Tad"/>
                             </mask>
                         </variation>
                     </view>
@@ -229,4 +241,7 @@
             <point key="canvasLocation" x="-1024" y="-792"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="g43-LC-DyU"/>
+    </inferredMetricsTieBreakers>
 </document>
