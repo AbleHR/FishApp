@@ -26,12 +26,12 @@ class ViewController3: UIViewController {
     var length :Double = 0
     var weight :Double = 0
     var date :NSDate = NSDate()
-    var time :Double = 0
+    var time :NSDate = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(time)
+        print("this should be our identifier \(time)")
         
         
     }

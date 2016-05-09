@@ -192,9 +192,16 @@
                                 </variation>
                                 <connections>
                                     <action selector="createFish:" destination="dXq-xH-BiC" eventType="touchUpInside" id="Rt4-px-J8B"/>
-                                    <segue destination="i7r-VL-cPR" kind="presentation" id="zZv-Y8-vZp"/>
+                                    <segue destination="i7r-VL-cPR" kind="presentation" identifier="Segue2to3" id="zZv-Y8-vZp"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ejn-CS-oX0">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="477" width="400" height="323"/>
+                                </variation>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -206,11 +213,17 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Ac6-gi-Y0K"/>
+                                <exclude reference="ejn-CS-oX0"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Ac6-gi-Y0K"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ejn-CS-oX0"/>
                             </mask>
                         </variation>
                     </view>
@@ -225,7 +238,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-27" y="-808"/>
+            <point key="canvasLocation" x="-27" y="-808.5"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="cal-vI-qHe">

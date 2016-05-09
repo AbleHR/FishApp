@@ -222,7 +222,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             destination.lat = 40
             destination.long = 20
             
-            
+            print("we're in the segue")
             let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
             
             let request = NSFetchRequest()

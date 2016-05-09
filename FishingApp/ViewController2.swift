@@ -23,7 +23,7 @@ class ViewController2: UIViewController {
     var long :Double = 0
     var date :NSDate = NSDate()
     
-    var timeInterval = NSDate().timeIntervalSince1970
+    var timeInterval = NSDate()
   
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
@@ -89,7 +89,7 @@ class ViewController2: UIViewController {
     
     
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?, time: Double){
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         let destination = segue.destinationViewController as! ViewController3
         
         
@@ -98,14 +98,16 @@ class ViewController2: UIViewController {
         let request = NSFetchRequest()
         request.entity = entityDescription
         
-        let pred = NSPredicate(format: " (time_stamp = %@)",time )
+        let pred = NSPredicate(format: "(time_stamp = %@)", timeInterval )
         request.predicate = pred
         
         do {
             var results = try managedObjectContext.executeFetchRequest(request)
-            
+            print(timeInterval)
+            print(results.count)
             if results.count > 0 {
                 let match = results[0] as! NSManagedObject
+                print(match)
                 destination.species = (match.valueForKey("species") as? String)!
                 destination.long = (match.valueForKey("loc_long") as? Double)!
                 destination.lat = (match.valueForKey("loc_lat") as? Double)!
@@ -120,6 +122,7 @@ class ViewController2: UIViewController {
             }
         } catch let error as NSError {
             print(error.localizedFailureReason)
+            print("there was an error accessing the fish info")
         }
         
         
@@ -127,17 +130,25 @@ class ViewController2: UIViewController {
     
     
     @IBAction func createFish(sender: AnyObject) {
-        
-        timeInterval = NSDate().timeIntervalSince1970
+        timeInterval = NSDate()
+        var tempLat = locationManager.location?.coordinate.latitude
+        var temLong = locationManager.location?.coordinate.longitude
         
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
         
         let fish = Fish(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
         fish.date = date
-        fish.loc_lat = locationManager.location?.coordinate.latitude
-        fish.loc_long = locationManager.location?.coordinate.longitude
-        fish.length = 2
-        fish.weight = 3
+        var timeout = 0
+        while (tempLat == nil && temLong == nil && timeout < 200000){
+            sleep(1)
+            timeout += 1
+            tempLat = locationManager.location?.coordinate.latitude
+            temLong = locationManager.location?.coordinate.longitude
+        }
+        fish.loc_lat = tempLat
+        fish.loc_long = temLong
+        fish.length = 2.0
+        fish.weight = 3.8
         fish.species = "fish2"
         fish.time_stamp = timeInterval
         fish.photo = ""
@@ -146,12 +157,13 @@ class ViewController2: UIViewController {
         do {
             try managedObjectContext.save()
             print("fish created")
+            print(timeInterval)
             
         } catch let error as NSError {
             print("errrrr")
         }
         
-        
+        self.performSegueWithIdentifier("Segue2to3", sender: self)
     }
     
     
