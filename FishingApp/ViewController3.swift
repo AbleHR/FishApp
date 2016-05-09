@@ -31,7 +31,7 @@ class ViewController3: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        print(time)
         
         
     }
@@ -42,20 +42,28 @@ class ViewController3: UIViewController {
     }
     
     
-    @IBAction func saveLength(sender: AnyObject) {
-        
+    @IBAction func saveLength(sender: UISlider) {
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
-
-        let fish = Fish(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
-        fish.length = Double (sender.value)
+        
+        print("we made it in")
+        let request = NSFetchRequest()
+        request.entity = entityDescription
+        request.predicate = NSPredicate(format: "time_stamp = %@", time)
         
         do {
-            try managedObjectContext.save()
-            
+            if var results = try managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
+                print("the count is \(results.count)")
+                if results.count != 0 {
+                    let managedObject = results[0]
+                    print(sender.value)
+                    //managedObject.setValue(sender.value, forKey: "length")
+                    
+                    try managedObjectContext.save()
+                }
+            }
         } catch let error as NSError {
-            print("errrrr")
+            print(error.localizedFailureReason)
         }
-        
 
 
         
@@ -63,17 +71,20 @@ class ViewController3: UIViewController {
 
     @IBAction func saveWeight(sender: AnyObject) {
         
-        let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
         
-        let fish = Fish(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
-        fish.weight = Double (sender.value)
         
-        do {
-            try managedObjectContext.save()
-            
-        } catch let error as NSError {
-            print("errrrr")
-        }
+        
+//        let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
+//        
+//        let fish = Fish(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+//        fish.weight = Double (sender.value)
+//        
+//        do {
+//            try managedObjectContext.save()
+//            
+//        } catch let error as NSError {
+//            print("errrrr")
+//        }
         
     }
     

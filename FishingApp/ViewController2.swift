@@ -112,7 +112,7 @@ class ViewController2: UIViewController {
                 destination.date = (match.valueForKey("date") as? NSDate)!
                 destination.length = (match.valueForKey("length") as? Double)!
                 destination.weight = (match.valueForKey("weight") as? Double)!
-                destination.time = (match.valueForKey("weight") as? Double)!
+                destination.time = timeInterval
 
 
             } else {
@@ -145,6 +145,7 @@ class ViewController2: UIViewController {
         
         do {
             try managedObjectContext.save()
+            print("fish created")
             
         } catch let error as NSError {
             print("errrrr")
