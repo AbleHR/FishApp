@@ -30,8 +30,9 @@ class TripTableViewController: UITableViewController {
         
         do{
             var results = try managedObjectContext.executeFetchRequest(request)
-            
+            print(String("hi we made it here0"))
             if results.count > 0 {
+                print(String("hi we made it here1"))
                 
                 for var row in results  {
                     tripRows.append(row)
