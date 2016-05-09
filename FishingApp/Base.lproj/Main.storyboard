@@ -155,6 +155,7 @@
                         <outlet property="Visibility" destination="Whv-TY-Jcw" id="wtv-2b-9x3"/>
                         <outlet property="Weather" destination="pPa-c3-Eo5" id="ub0-w9-Hci"/>
                         <outlet property="WindSpeed" destination="0Ur-ca-Y7n" id="G30-l5-35m"/>
+                        <outlet property="tableView" destination="dT8-nO-PMA" id="uja-Cf-hug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

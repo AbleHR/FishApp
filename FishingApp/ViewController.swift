@@ -11,8 +11,9 @@ import CoreData
 import CoreLocation
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate,UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     let currentDate = NSDate()
     
     let locationManager = CLLocationManager()
@@ -32,7 +33,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var Weather: UILabel!
     
-    @IBOutlet weak var date: UITextField!
+    var TripLabels = [NSDate]()
+    var tripRows = [AnyObject]()
     
     
    
@@ -88,6 +90,66 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.tableView.registerClass(TripTableCellView.self, forCellReuseIdentifier: "TripTableCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
+        
+        
+        
+        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+        let trip = Trip(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+        
+        let request = NSFetchRequest()
+        request.entity = entityDescription
+        // NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableData:", name: "reload", object: nil)
+        
+        
+        do{
+            var results = try managedObjectContext.executeFetchRequest(request)
+            
+            if results.count > 0 {
+                
+                for var row in results  {
+                    tripRows.append(row)
+                    if let entryDate = row.date! {
+                        TripLabels.append(entryDate)
+                        print(String("hi we made it here" + String(entryDate)))
+                    }else{
+                        print("empty date in row")
+                    }
+                    
+                    
+                }
+                
+            }else{
+                
+            }
+        } catch let error as NSError{
+            
+        }
+        
+        
+        tableView.estimatedRowHeight = 20
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
         //pull from the trip table when the view loads to populate the list ofold trip
         
@@ -105,8 +167,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         
         
-        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
-        let trip = Trip(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+        
         trip.loc_lat = 40
         trip.loc_long = 40
         trip.date = NSDate()
@@ -249,7 +310,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
     }
 
-
+   
+     func tableView(tableView: UITableView, numberOfRowsInSection
+        section: Int) -> Int {
+            return TripLabels.count
+    }
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
+        
+        let row = indexPath.row
+        if let cellDate = cell.cellDate{
+            cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+            cell.cellDate.text = String(TripLabels[row])
+            print("celldate is here")
+        }
+        
+        
+        return cell
+        
+    }
 
     
     
