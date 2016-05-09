@@ -31,11 +31,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 
     
     @IBOutlet weak var Weather: UILabel!
-    
-//    var TripLabels = [NSDate]()
-//    var tripRows = [AnyObject]()
-//    
-    
+
    
     
     
@@ -91,59 +87,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         super.viewDidLoad()
         
         
-//        self.tableView.registerClass(TripTableCellView.self, forCellReuseIdentifier: "TripTableCell")
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        
-//        
-//        
-//        
-//        
-//        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
-//        let trip = Trip(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
-//        
-//        let request = NSFetchRequest()
-//        request.entity = entityDescription
-//        // NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableData:", name: "reload", object: nil)
-//        
-//        
-//        do{
-//            var results = try managedObjectContext.executeFetchRequest(request)
-//            
-//            if results.count > 0 {
-//                
-//                for var row in results  {
-//                    tripRows.append(row)
-//                    if let entryDate = row.date! {
-//                        TripLabels.append(entryDate)
-//                        print(String("hi we made it here" + String(entryDate)))
-//                    }else{
-//                        print("empty date in row")
-//                    }
-//                    
-//                    
-//                }
-//                
-//            }else{
-//                
-//            }
-//        } catch let error as NSError{
-//            
-//        }
-//        
-//        
-//        tableView.estimatedRowHeight = 20
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-        
         
         
         
@@ -165,16 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         }
         
         
-//        
-//        
-//        trip.loc_lat = 40
-//        trip.loc_long = 40
-//        trip.date = NSDate()
-//        trip.weather = "hi"
-//        trip.visibility_mi = "vis"
-//        trip.wind_mph = "5000"
-//        trip.precip = " this"
-//        trip.condition = "great"
+
         
         do {
             try managedObjectContext.save()
@@ -309,28 +243,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             
     }
 
-//   
-//     func tableView(tableView: UITableView, numberOfRowsInSection
-//        section: Int) -> Int {
-//            return TripLabels.count
-//    }
-//       func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
-//        
-//        let row = indexPath.row
-//        if let cellDate = cell.cellDate {
-//            cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-//            cellDate.text = String(TripLabels[row])
-//            print("celldate is here")
-//        }else{
-//            print("no cell")
-//        }
-//        
-//        
-//        return cell
-//        
-//    }
-//
+
     
     
 

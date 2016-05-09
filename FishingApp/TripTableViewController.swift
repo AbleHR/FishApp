@@ -21,7 +21,7 @@ class TripTableViewController: UITableViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        self.tableView.registerClass(TripTableCellView.self, forCellReuseIdentifier: "TripTableCell")
+        //self.tableView.registerClass(TripTableCellView.self, forCellReuseIdentifier: "TripTableCell")
         // tableView.delegate = self
         // tableView.dataSource = self
         let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
@@ -59,6 +59,9 @@ class TripTableViewController: UITableViewController {
                     tableView.estimatedRowHeight = 20
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -70,21 +73,19 @@ class TripTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-                let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as? TripTableCellView
-        if (cell == nil){
-            print(" cell is nil for index path \(indexPath)")
-        }
+                let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
+       
                 let row = indexPath.row
-                if let cellDate = cell?.cellDate {
-                    cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-                    cellDate.text = String(TripLabels[row])
+                //if let cellDate = cell.cellDate {
+                    cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+                    cell.cellDate.text = String(TripLabels[row])
                     print("celldate is here")
-                }else{
-                    print("no cell")
-                }
+               // }else{
+                //    print("no cell")
+               // }
                 
                 
-                return cell!
+                return cell
                 
             }
     func reloadTableData(notification: NSNotification) {
