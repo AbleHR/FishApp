@@ -13,7 +13,8 @@ import UIKit
 
 class TripTableCellView: UITableViewCell{
 
-    
     @IBOutlet weak var cellDate: UILabel!
+    
+    
     
 }

@@ -12,6 +12,7 @@ import CoreData
 
 class TripTableViewController: UITableViewController {
     
+    @IBOutlet weak var triptable: UITableView!
     //display cells
     var TripLabels = [NSDate]()
     var tripRows = [AnyObject]()
@@ -20,7 +21,9 @@ class TripTableViewController: UITableViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        
+        self.tableView.registerClass(TripTableCellView.self, forCellReuseIdentifier: "TripTableCell")
+        // tableView.delegate = self
+        // tableView.dataSource = self
         let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
         
         let request = NSFetchRequest()
@@ -29,47 +32,61 @@ class TripTableViewController: UITableViewController {
         
         
         do{
-            var results = try managedObjectContext.executeFetchRequest(request)
-            print(String("hi we made it here0"))
-            if results.count > 0 {
-                print(String("hi we made it here1"))
-                
-                for var row in results  {
-                    tripRows.append(row)
-                    if let date = row.date{
-                        TripLabels.append(date!)
-                    }
-                    print(String("hi we made it here" + String(row.date)))
-                    
-                }
-                
-            }else{
-                
-            }
-        } catch let error as NSError{
+                        var results = try managedObjectContext.executeFetchRequest(request)
             
-        }
-        
-        
-        tableView.estimatedRowHeight = 20
+                        if results.count > 0 {
+            
+                            for var row in results  {
+                                tripRows.append(row)
+                                if let entryDate = row.date! {
+                                    TripLabels.append(entryDate)
+                                    print(String("hi we made it here" + String(entryDate)))
+                                }else{
+                                    print("empty date in row")
+                                }
+            
+            
+                            }
+            
+                        }else{
+                            
+                        }
+                    } catch let error as NSError{
+                        
+                    }
+                    
+                    
+                    tableView.estimatedRowHeight = 20
     }
+    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection
         section: Int) -> Int {
+            print("made it totableviewnumrowsinsection \(TripLabels.count)")
             return TripLabels.count
     }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
-        
-        let row = indexPath.row
-        cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        cell.cellDate.text = String(TripLabels[row])
-        return cell
-        
-    }
+                let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as? TripTableCellView
+        if (cell == nil){
+            print(" cell is nil for index path \(indexPath)")
+        }
+                let row = indexPath.row
+                if let cellDate = cell?.cellDate {
+                    cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+                    cellDate.text = String(TripLabels[row])
+                    print("celldate is here")
+                }else{
+                    print("no cell")
+                }
+                
+                
+                return cell!
+                
+            }
     func reloadTableData(notification: NSNotification) {
         tableView.reloadData()
     }

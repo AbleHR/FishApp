@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -86,48 +86,15 @@
                                     <segue destination="dXq-xH-BiC" kind="presentation" id="g43-LC-DyU"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dT8-nO-PMA">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZoP-ON-ZwR">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.41950558395792481" green="0.42101149117732983" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="sectionIndexBackgroundColor" red="0.25509308707841294" green="0.33053563117508455" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripTableCell" id="ckt-Rl-3sX" customClass="TripTableCellView" customModule="FishingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ckt-Rl-3sX" id="hs7-SO-kY0">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFd-Qa-yXp">
-                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="0.0" width="384" height="35"/>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="PFd-Qa-yXp"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="PFd-Qa-yXp"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="cellDate" destination="PFd-Qa-yXp" id="e12-Pv-tRb"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="304" width="400" height="296"/>
                                 </variation>
-                            </tableView>
+                                <connections>
+                                    <segue destination="4RP-3N-3k9" kind="embed" id="WTD-Oo-e31"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -138,7 +105,7 @@
                                 <exclude reference="pPa-c3-Eo5"/>
                                 <exclude reference="RFR-9P-cS4"/>
                                 <exclude reference="pac-ll-Tad"/>
-                                <exclude reference="dT8-nO-PMA"/>
+                                <exclude reference="ZoP-ON-ZwR"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -149,7 +116,7 @@
                                 <include reference="pPa-c3-Eo5"/>
                                 <include reference="RFR-9P-cS4"/>
                                 <include reference="pac-ll-Tad"/>
-                                <include reference="dT8-nO-PMA"/>
+                                <include reference="ZoP-ON-ZwR"/>
                             </mask>
                         </variation>
                     </view>
@@ -159,12 +126,11 @@
                         <outlet property="Visibility" destination="Whv-TY-Jcw" id="wtv-2b-9x3"/>
                         <outlet property="Weather" destination="pPa-c3-Eo5" id="ub0-w9-Hci"/>
                         <outlet property="WindSpeed" destination="0Ur-ca-Y7n" id="G30-l5-35m"/>
-                        <outlet property="tableView" destination="dT8-nO-PMA" id="uja-Cf-hug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1252.5" y="-1746"/>
+            <point key="canvasLocation" x="-1600" y="-1816"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="n8Y-mi-IGC">
@@ -317,6 +283,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhC-tI-Z2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1024" y="-792"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bMh-xr-GZM">
+            <objects>
+                <viewController id="rvW-SI-5D7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hM7-VL-so4"/>
+                        <viewControllerLayoutGuide type="bottom" id="ea5-GL-mom"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ulT-Ep-ts4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lou-WZ-XYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="436" y="106"/>
+        </scene>
+        <!--Trip Table View Controller-->
+        <scene sceneID="cnW-c0-ha9">
+            <objects>
+                <viewController id="4RP-3N-3k9" customClass="TripTableViewController" customModule="FishingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jdO-je-bew">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.10884906649999999" green="0.33333333329999998" blue="0.23332228090000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripTableCell" id="ckt-Rl-3sX" customClass="TripTableCellView" customModule="FishingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ckt-Rl-3sX" id="hs7-SO-kY0">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work pls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9H-rj-MyP">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="43"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <color key="tintColor" red="0.99600917740934902" green="1" blue="0.97484960592322789" alpha="1" colorSpace="calibratedRGB"/>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="b9H-rj-MyP"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="b9H-rj-MyP"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="0.59898384227422752" blue="0.61929347034194682" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="cellDate" destination="b9H-rj-MyP" id="epn-Hu-iWZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <connections>
+                        <outlet property="triptable" destination="jdO-je-bew" id="2eM-6x-hCU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UsF-Dd-rcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-625.5" y="-1816.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
