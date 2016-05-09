@@ -12,86 +12,23 @@ import CoreLocation
 
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-    
-    let currentDate = NSDate()
-    
     let locationManager = CLLocationManager()
-    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    var weatherJson: NSString = ""
-    var timeInterval = NSDate().timeIntervalSince1970 - 500
-    
-
     @IBOutlet weak var Visibility: UILabel!
     @IBOutlet weak var Temp: UILabel!
-
-
     @IBOutlet weak var WindSpeed: UILabel!
-
-    
     @IBOutlet weak var Weather: UILabel!
     
-    @IBOutlet weak var date: UITextField!
-    
-    
-   
-    
-    
-    
-    
-    //link to the create new trip button
-    @IBAction func newtrip(sender: AnyObject) {
-    let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
-        let trip = Trip(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
-        
-        trip.date = currentDate
-        trip.temp = Temp.text!
-        trip.visibility_mi = Visibility.text!
-        trip.wind_mph = WindSpeed.text!
-        trip.weather = Weather.text!
-        trip.condition = "test"
-        if CLLocationManager.locationServicesEnabled() {
-            
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-            trip.loc_lat = locationManager.location?.coordinate.latitude
-            trip.loc_long = locationManager.location?.coordinate.longitude
-        }
-        
-        
-        
-        //pull the info from the labels to fill out the attributes to be saved as a trip along with current location
-        //trip.date = (pull current date from either the phone or a label)
-        
-        do{
-            //try to save tell user save worked
-            try managedObjectContext.save()
-            
-        }catch let error as NSError {
-            print("Failed Save with error \(error)")
-            //tell user that save failed
-   //         errorAlert(self)
-            
-        }
-        
-        
-        
-        //reload tableview
-        
-        
-        
-    
-    
-        
-    }
+    let currentDate = NSDate()
+    var weatherJson: NSString = ""
+    var timeInterval = NSDate().timeIntervalSince1970 - 500
+    var date: NSDate = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         //pull from the trip table when the view loads to populate the list ofold trip
-        
-        
         self.locationManager.requestAlwaysAuthorization()
         
         // For use in foreground
@@ -102,31 +39,48 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        
-        
-        
-        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+    }
+    
+    //link to the create new trip button
+    @IBAction func newtrip(sender: AnyObject) {
+    let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
         let trip = Trip(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
-        trip.loc_lat = 40
-        trip.loc_long = 40
-        trip.date = NSDate()
-        trip.weather = "hi"
-        trip.visibility_mi = "vis"
-        trip.wind_mph = "5000"
-        trip.precip = " this"
-        trip.condition = "great"
         
-        do {
-            try managedObjectContext.save()
-            
-        } catch let error as NSError {
-            print("errrrr")
+        date = NSDate()
+        var tempLat = locationManager.location?.coordinate.latitude
+        var tempLong = locationManager.location?.coordinate.longitude
+        var timeout = 0
+        while (tempLat == nil && tempLong == nil && timeout < 200000){
+            sleep(1)
+            timeout += 1
+            tempLat = locationManager.location?.coordinate.latitude
+            tempLong = locationManager.location?.coordinate.longitude
+            print("waiting")
         }
         
+        trip.date = date
+        trip.temp = Temp.text!
+        trip.visibility_mi = Visibility.text!
+        trip.wind_mph = WindSpeed.text!
+        trip.weather = Weather.text!
+        trip.condition = "test"
         
-        print("start")
+        locationManager.delegate = self
+        trip.loc_lat = tempLat
+        trip.loc_long = tempLong
+
         
+        do{
+            try managedObjectContext.save()
+            print("Successfully saved the trip")
+        }catch let error as NSError {
+            print("Failed Save with error \(error)")
+        }
+        
+        self.performSegueWithIdentifier("Segue1to2", sender: self)
     }
+    
+   
     
     
     
@@ -143,36 +97,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func getWeather(lat: Double, long: Double){
         let newLat = String(lat)
         let newLong = String(long)
-        
         let urlString = "https://api.wunderground.com/api/417adfddac32a897/conditions/forecast/alert/q/" + newLat + "," + newLong + ".json"
-        
-        //https://api.wunderground.com/api/417adfddac32a897/conditions/forecast/alert/q/42.6432129,-87.8501127.json
-        
         let url = NSURL(string: urlString)
-        
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            //print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-            
             self.weatherJson = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-            //print(self.weatherJson)
-            
             var json: [String: AnyObject]
             do {
                 json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as! [String: AnyObject] //as? Array
-                
-                //let output = json["forecast"]
-                //print(output)
-                
                 if let level1 = json["current_observation"] as? [String: AnyObject] {
-                    
                     if let level2_weather = level1["weather"] as? String{
                         print(level2_weather)
-                        
                         dispatch_async(dispatch_get_main_queue()) {
-                                self.Weather.text = level2_weather
-                            
+                            self.Weather.text = level2_weather
                         }
-                        
                     }
                     if let level2_temp = level1["temp_f"] as? Double{
                         print(String(level2_temp) + " F")
@@ -199,8 +136,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             
                         }
                     }
-                    
-                    
                 }
             }
             catch {
@@ -217,22 +152,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?, date: NSDate){
-            let destination = segue.destinationViewController as! ViewController2
-            destination.lat = 40
-            destination.long = 20
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        let destination = segue.destinationViewController as! ViewController2
+        
+        
+        // fetch information from core data and pass it to the next view
+        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+        let request = NSFetchRequest()
+        request.entity = entityDescription
             
-            print("we're in the segue")
-            let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
-            
-            let request = NSFetchRequest()
-            request.entity = entityDescription
-            
-            let pred = NSPredicate(format: " (date = %@)",date )
-            request.predicate = pred
+        let pred = NSPredicate(format: "(date = %@)", date )
+        request.predicate = pred
         
         do {
             var results = try managedObjectContext.executeFetchRequest(request)
+            
+            print(results.count)
             
             if results.count > 0 {
                 let match = results[0] as! NSManagedObject
@@ -246,7 +181,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             print(error.localizedFailureReason)
         }
         
-            
+        
     }
 
 

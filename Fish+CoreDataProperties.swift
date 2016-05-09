@@ -22,6 +22,7 @@ extension Fish {
     @NSManaged var species: String?
     @NSManaged var time_stamp: NSDate?
     @NSManaged var weight: NSNumber?
+    @NSManaged var notes: String?
     @NSManaged var relationship: Trip?
 
 }

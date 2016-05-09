@@ -13,88 +13,63 @@ import CoreData
 import CoreLocation
 
 
-class ViewController2: UIViewController {
+class ViewController2: UIViewController, CLLocationManagerDelegate {
+    let locationManager = CLLocationManager()
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     @IBOutlet weak var mapView: MKMapView!
-    
-    let locationManager = CLLocationManager()
     
     var lat :Double = 0
     var long :Double = 0
     var date :NSDate = NSDate()
-    
     var timeInterval = NSDate()
   
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         /// show users location
         mapView.showsUserLocation = true
-        
         mapView.mapType = MKMapType.Hybrid
-        
         mapView.region.center.latitude = lat
         mapView.region.center.longitude = long
-        
         mapView.removeAnnotations(mapView.annotations)
-        
         let center = mapView.centerCoordinate
         let region = MKCoordinateRegionMakeWithDistance(center, 2000, 2000)
         // set region to current region
         mapView.setRegion(region, animated: true)
 
         
-        
+        /// TODO get all the fish for the trip so we can display them in the table view
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
-        
         let request = NSFetchRequest()
         request.entity = entityDescription
-        
         let pred = NSPredicate(format: " (date = %@)", date )
         request.predicate = pred
         
         do {
             var results = try managedObjectContext.executeFetchRequest(request)
-            
+            print("The number of fish \(results.count)")
             if results.count > 0 {
-         
                 for index in 0...results.count {
                     let match = results[index] as! NSManagedObject
-                    
-                    
-                    
                 }
-                
             } else {
                 
             }
         } catch let error as NSError {
             print(error.localizedFailureReason)
         }
-
-        
-
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-}
-    
-    
-    
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         let destination = segue.destinationViewController as! ViewController3
         
-        
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
-        
         let request = NSFetchRequest()
         request.entity = entityDescription
         
@@ -114,9 +89,8 @@ class ViewController2: UIViewController {
                 destination.date = (match.valueForKey("date") as? NSDate)!
                 destination.length = (match.valueForKey("length") as? Double)!
                 destination.weight = (match.valueForKey("weight") as? Double)!
+                destination.notes = (match.valueForKey("notes") as? String)!
                 destination.time = timeInterval
-
-
             } else {
                 
             }
@@ -124,8 +98,6 @@ class ViewController2: UIViewController {
             print(error.localizedFailureReason)
             print("there was an error accessing the fish info")
         }
-        
-        
     }
     
     
@@ -135,9 +107,10 @@ class ViewController2: UIViewController {
         var temLong = locationManager.location?.coordinate.longitude
         
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
-        
         let fish = Fish(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
+        
         fish.date = date
+        
         var timeout = 0
         while (tempLat == nil && temLong == nil && timeout < 200000){
             sleep(1)
@@ -147,12 +120,12 @@ class ViewController2: UIViewController {
         }
         fish.loc_lat = tempLat
         fish.loc_long = temLong
-        fish.length = 2.0
-        fish.weight = 3.8
-        fish.species = "fish2"
+        fish.length = 0.75
+        fish.weight = 0.25
+        fish.species = "Enter the Species"
         fish.time_stamp = timeInterval
         fish.photo = ""
-        
+        fish.notes = "Take some notes"
         
         do {
             try managedObjectContext.save()
@@ -164,20 +137,5 @@ class ViewController2: UIViewController {
         }
         
         self.performSegueWithIdentifier("Segue2to3", sender: self)
-    }
-    
-    
-    
-    @IBAction func getLongPressCoordinates(sender: UILongPressGestureRecognizer) {
-        if sender.state != UIGestureRecognizerState.Began { return }
-        let touchLocation = sender.locationInView(mapView)
-        let locationCoordinate = mapView.convertPoint(touchLocation, toCoordinateFromView: mapView)
-        print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
-        
-        let fishPin = MKPointAnnotation()
-        fishPin.coordinate.latitude = locationCoordinate.latitude
-        fishPin.coordinate.longitude = locationCoordinate.longitude
-        fishPin.title = "Fish"
-        self.mapView.addAnnotation(fishPin)
     }
 }
