@@ -41,7 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //link to the create new trip button
-    @IBAction func saveTrip(sender: AnyObject) {
+    @IBAction func newtrip(sender: AnyObject) {
     let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
         let trip = Trip(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
         
@@ -69,7 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             try managedObjectContext.save()
             
         }catch let error as NSError {
-            
+            print("Failed Save with error \(error)")
             //tell user that save failed
    //         errorAlert(self)
             
