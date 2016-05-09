@@ -19,6 +19,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var Temp: UILabel!
     @IBOutlet weak var WindSpeed: UILabel!
     @IBOutlet weak var Weather: UILabel!
+
+   
     
     let currentDate = NSDate()
     var weatherJson: NSString = ""
@@ -27,6 +29,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+        
+        
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        //pull from the trip table when the view loads to populate the list ofold trip
         
         //pull from the trip table when the view loads to populate the list ofold trip
         self.locationManager.requestAlwaysAuthorization()
@@ -180,7 +191,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         } catch let error as NSError {
             print(error.localizedFailureReason)
         }
-        
+    
         
     }
 

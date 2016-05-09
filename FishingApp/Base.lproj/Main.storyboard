@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -73,18 +73,8 @@
                                     <rect key="frame" x="0.0" y="266" width="229" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="newtrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3yr-x6-EDR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pac-ll-Tad">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="302" y="266" width="46" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="newtrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fgv-8O-yWA"/>
-                                    <segue destination="dXq-xH-BiC" kind="presentation" identifier="Segue1to2" id="g43-LC-DyU"/>
+                                    <action selector="newtrip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Axp-AU-8bl"/>
+                                    <segue destination="dXq-xH-BiC" kind="presentation" identifier="Segue1to2" id="BTJ-AA-a7Z"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZoP-ON-ZwR">
@@ -105,7 +95,6 @@
                                 <exclude reference="0Ur-ca-Y7n"/>
                                 <exclude reference="pPa-c3-Eo5"/>
                                 <exclude reference="RFR-9P-cS4"/>
-                                <exclude reference="pac-ll-Tad"/>
                                 <exclude reference="ZoP-ON-ZwR"/>
                             </mask>
                         </variation>
@@ -116,7 +105,6 @@
                                 <include reference="0Ur-ca-Y7n"/>
                                 <include reference="pPa-c3-Eo5"/>
                                 <include reference="RFR-9P-cS4"/>
-                                <include reference="pac-ll-Tad"/>
                                 <include reference="ZoP-ON-ZwR"/>
                             </mask>
                         </variation>
@@ -193,7 +181,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-27" y="-808.5"/>
+            <point key="canvasLocation" x="-579" y="-1375.5"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="cal-vI-qHe">
@@ -390,7 +378,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhC-tI-Z2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1024" y="-792"/>
+            <point key="canvasLocation" x="-2995.5" y="-1341.75"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bMh-xr-GZM">
@@ -420,7 +408,7 @@
                         <color key="backgroundColor" red="0.10884906649999999" green="0.33333333329999998" blue="0.23332228090000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TripTableCell" id="ckt-Rl-3sX" customClass="TripTableCellView" customModule="FishingApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ckt-Rl-3sX" id="hs7-SO-kY0">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
@@ -465,7 +453,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g43-LC-DyU"/>
-        <segue reference="zZv-Y8-vZp"/>
+        <segue reference="BTJ-AA-a7Z"/>
+        <segue reference="ZsW-iV-yvX"/>
     </inferredMetricsTieBreakers>
 </document>
