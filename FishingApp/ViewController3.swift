@@ -37,6 +37,8 @@ class ViewController3: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         // initialize the input fields
         lengthSlider.value = Float(length)
         weightSlider.value = Float(weight)

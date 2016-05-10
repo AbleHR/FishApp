@@ -182,7 +182,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-579" y="-1375.5"/>
+            <point key="canvasLocation" x="-616.5" y="-1078"/>
         </scene>
         <!--View Controller3-->
         <scene sceneID="cal-vI-qHe">
@@ -440,6 +440,7 @@
                                 <color key="backgroundColor" red="1" green="0.59898384227422752" blue="0.61929347034194682" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="cellDate" destination="b9H-rj-MyP" id="epn-Hu-iWZ"/>
+                                    <segue destination="dXq-xH-BiC" kind="presentation" identifier="SequetoView2" id="u37-zw-WgN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -454,7 +455,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BTJ-AA-a7Z"/>
-        <segue reference="ZsW-iV-yvX"/>
+        <segue reference="u37-zw-WgN"/>
+        <segue reference="zZv-Y8-vZp"/>
     </inferredMetricsTieBreakers>
 </document>

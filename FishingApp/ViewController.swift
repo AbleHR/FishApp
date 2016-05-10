@@ -30,13 +30,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-        
-        
-        
+
         // Do any additional setup after loading the view, typically from a nib.
         //pull from the trip table when the view loads to populate the list ofold trip
         
@@ -48,7 +42,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
     }
@@ -69,13 +62,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             tempLong = locationManager.location?.coordinate.longitude
             print("waiting")
         }
-        
+
         trip.date = date
         trip.temp = Temp.text!
+        print(String(date) + " date from view 1")
         trip.visibility_mi = Visibility.text!
         trip.wind_mph = WindSpeed.text!
         trip.weather = Weather.text!
-        trip.condition = "test"
+        trip.condition = "It worked from controller 1"
         
         locationManager.delegate = self
         trip.loc_lat = tempLat
@@ -89,7 +83,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             print("Failed Save with error \(error)")
         }
         
-        self.performSegueWithIdentifier("Segue1to2", sender: self)
+        //self.performSegueWithIdentifier("Segue1to2", sender: self)
     }
     
    
@@ -164,37 +158,40 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
+    
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         
         if (sender === NewTrip) {
         
-        let destination = segue.destinationViewController as! ViewController2
-        // fetch information from core data and pass it to the next view
-        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
-        let request = NSFetchRequest()
-        request.entity = entityDescription
+            let destination = segue.destinationViewController as! ViewController2
+            // fetch information from core data and pass it to the next view
+            let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+            let request = NSFetchRequest()
+            request.entity = entityDescription
             
-        let pred = NSPredicate(format: "(date = %@)", date )
-        request.predicate = pred
+            let pred = NSPredicate(format: "(date = %@)", date )
+            request.predicate = pred
         
-        do {
-            var results = try managedObjectContext.executeFetchRequest(request)
+            do {
+                var results = try managedObjectContext.executeFetchRequest(request)
             
-            print(results.count)
+                print(results.count)
             
-            if results.count > 0 {
-                let match = results[0] as! NSManagedObject
-                    destination.lat = (match.valueForKey("loc_lat") as? Double)!
-                    destination.long = (match.valueForKey("loc_long") as? Double)!
-                    destination.date = (match.valueForKey("date") as? NSDate)!
-            } else {
-                
+                if results.count > 0 {
+                    let match = results[0] as! NSManagedObject
+                        destination.lat = (match.valueForKey("loc_lat") as? Double)!
+                        destination.long = (match.valueForKey("loc_long") as? Double)!
+                        destination.date = (match.valueForKey("date") as? NSDate)!
+                        destination.test = (match.valueForKey("condition") as? String)!
+                    print("everything added in view1")
+                } else {
+                    print("Nothing added to coreData in View1")
+                }
+            } catch let error as NSError {
+                print(error.localizedFailureReason)
             }
-        } catch let error as NSError {
-            print(error.localizedFailureReason)
-        }
             
-        }
+        } // end if
     
         
     }

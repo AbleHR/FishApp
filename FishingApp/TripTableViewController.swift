@@ -10,13 +10,15 @@ import Foundation
 import UIKit
 import CoreData
 
-class TripTableViewController: UITableViewController {
+class TripTableViewController: UITableViewController{
     
     @IBOutlet weak var triptable: UITableView!
     //display cells
     var TripLabels = [NSDate]()
     var tripRows = [AnyObject]()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    var targetTrip: NSDate = NSDate()
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -40,7 +42,6 @@ class TripTableViewController: UITableViewController {
                                 tripRows.append(row)
                                 if let entryDate = row.date! {
                                     TripLabels.append(entryDate)
-                                    print(String("hi we made it here" + String(entryDate)))
                                 }else{
                                     print("empty date in row")
                                 }
@@ -59,6 +60,12 @@ class TripTableViewController: UITableViewController {
                     tableView.estimatedRowHeight = 20
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        targetTrip = TripLabels[indexPath.indexAtPosition(1)]
+        self.performSegueWithIdentifier("SequetoView2", sender: self)
+        
+    }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
     }
@@ -68,7 +75,6 @@ class TripTableViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection
         section: Int) -> Int {
-            print("made it totableviewnumrowsinsection \(TripLabels.count)")
             return TripLabels.count
     }
     
@@ -79,7 +85,6 @@ class TripTableViewController: UITableViewController {
                 //if let cellDate = cell.cellDate {
                     cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                     cell.cellDate.text = String(TripLabels[row])
-                    print("celldate is here")
                // }else{
                 //    print("no cell")
                // }
@@ -91,5 +96,40 @@ class TripTableViewController: UITableViewController {
     func reloadTableData(notification: NSNotification) {
         tableView.reloadData()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if(sender === tableView) {
+        
+            print(String(targetTrip) + "In tripTable segue")
+            let destination = segue.destinationViewController as! ViewController2
+            // fetch information from core data and pass it to the next view
+            let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+            let request = NSFetchRequest()
+            request.entity = entityDescription
+        
+            let pred = NSPredicate(format: "(date = %@)", targetTrip )
+            request.predicate = pred
+        
+            do {
+                var results = try managedObjectContext.executeFetchRequest(request)
+            
+                print(results.count)
+            
+                if results.count > 0 {
+                    let match = results[0] as! NSManagedObject
+                    destination.lat = (match.valueForKey("loc_lat") as? Double)!
+                    destination.long = (match.valueForKey("loc_long") as? Double)!
+                    destination.date = (match.valueForKey("date") as? NSDate)!
+                    print(String((match.valueForKey("date") as? NSDate)!) + "date from tableView")
+                } else {
+                
+                }
+            } catch let error as NSError {
+                print(error.localizedFailureReason)
+            }
+
+        }
+    } // end if
     
 }

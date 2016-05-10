@@ -23,11 +23,12 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
     var long :Double = 0
     var date :NSDate = NSDate()
     var timeInterval = NSDate()
+    var test : String = "it didn't work"
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         /// show users location
+
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.Hybrid
         mapView.region.center.latitude = lat
@@ -69,6 +70,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         let destination = segue.destinationViewController as! ViewController3
         
+        
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
         let request = NSFetchRequest()
         request.entity = entityDescription
@@ -82,7 +84,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
             print(results.count)
             if results.count > 0 {
                 let match = results[0] as! NSManagedObject
-                print(match)
                 destination.species = (match.valueForKey("species") as? String)!
                 destination.long = (match.valueForKey("loc_long") as? Double)!
                 destination.lat = (match.valueForKey("loc_lat") as? Double)!
@@ -136,6 +137,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
             print("errrrr")
         }
         
-        self.performSegueWithIdentifier("Segue2to3", sender: self)
+        //self.performSegueWithIdentifier("Segue2to3", sender: self)
     }
 }
