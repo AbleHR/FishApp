@@ -82,7 +82,7 @@ class ViewController3: UIViewController {
             if var results = try managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
                 if results.count != 0 {
                     let managedObject = results[0]
-                    managedObject.setValue(sender.value, forKey: "length")
+                    managedObject.setValue(sender.value, forKey: "fish_length")
                     try managedObjectContext.save()
                 }
             }

@@ -17,9 +17,10 @@ class FishTableViewController: UITableViewController {
     //display cells
     var fishLabels = [NSDate]()
     var fishSpecies = [String]()
-    var fishLength = [String]()
-    var fishWeight = [String]()
+    var fishLength = [Double]()
+    var fishWeight = [Double]()
     var fishRows = [AnyObject]()
+    var date :NSDate = NSDate()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad(){
@@ -32,6 +33,9 @@ class FishTableViewController: UITableViewController {
         
         let request = NSFetchRequest()
         request.entity = entityDescription
+        
+        let pred = NSPredicate(format: "(date = %@)", date )
+        request.predicate = pred
         // NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableData:", name: "reload", object: nil)
         
         
@@ -49,10 +53,10 @@ class FishTableViewController: UITableViewController {
                     fishSpecies.append(match.valueForKey("species") as! String)
                     print(String("hi we made it to species" + String(match.valueForKey("species"))))
 
-                    fishLength.append(match.valueForKey("fish_length") as! String)
+                    fishLength.append(match.valueForKey("fish_length") as! Double)
                     print(String("hi we made it to fish_length" + String(match.valueForKey("fish_length"))))
                     
-                    fishWeight.append(match.valueForKey("weight") as! String)
+                    fishWeight.append(match.valueForKey("weight") as! Double)
                     print(String("hi we made it to weight" + String(match.valueForKey("weight"))))
                     
                     

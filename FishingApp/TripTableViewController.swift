@@ -35,18 +35,15 @@ class TripTableViewController: UITableViewController{
         
         do{
                         var results = try managedObjectContext.executeFetchRequest(request)
-            
-                        if results.count > 0 {
-            
-                            for var row in results  {
-                                tripRows.append(row)
-                                if let entryDate = row.date! {
-                                    TripLabels.append(entryDate)
-                                }else{
-                                    print("empty date in row")
-                                }
-            
-            
+                        print("\(results.count)")
+                            if results.count > 0 {
+//            
+                            for rowcount in 0...results.count-1{
+                                let match = results[rowcount] as! NSManagedObject
+                          
+                                TripLabels.append(match.valueForKey("date") as! NSDate)
+                                print(String("hi we made it here" + String(match.valueForKey("date"))))
+                                
                             }
                             
                             
@@ -94,19 +91,15 @@ class TripTableViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-                let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
+        let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
        
-                let row = indexPath.row
-                    cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-                    cell.cellDate.text = String(TripLabels[row])
-               // }else{
-                //    print("no cell")
-               // }
+        let row = indexPath.row
+            cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+            cell.cellDate.text = String(TripLabels[row])
                 
+        return cell
                 
-                return cell
-                
-            }
+    }
     func reloadTableData(notification: NSNotification) {
         tableView.reloadData()
     }

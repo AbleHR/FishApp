@@ -182,7 +182,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         destination.lat = (match.valueForKey("loc_lat") as? Double)!
                         destination.long = (match.valueForKey("loc_long") as? Double)!
                         destination.date = (match.valueForKey("date") as? NSDate)!
-                        destination.test = (match.valueForKey("condition") as? String)!
                     print("everything added in view1")
                 } else {
                     print("Nothing added to coreData in View1")

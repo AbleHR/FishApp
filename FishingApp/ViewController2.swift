@@ -17,18 +17,17 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
+    @IBOutlet weak var newFishButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
     var lat :Double = 0
     var long :Double = 0
     var date :NSDate = NSDate()
     var timeInterval = NSDate()
-    var test : String = "it didn't work"
   
     override func viewDidLoad() {
         super.viewDidLoad()
         /// show users location
-
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.Hybrid
         mapView.region.center.latitude = lat
@@ -68,36 +67,45 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-        let destination = segue.destinationViewController as! ViewController3
         
+        if(sender === newFishButton) {
         
-        let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
-        let request = NSFetchRequest()
-        request.entity = entityDescription
+            let destination = segue.destinationViewController as! ViewController3
         
-        let pred = NSPredicate(format: "(time_stamp = %@)", timeInterval )
-        request.predicate = pred
+            let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
+            let request = NSFetchRequest()
+            request.entity = entityDescription
         
-        do {
-            var results = try managedObjectContext.executeFetchRequest(request)
-            print(timeInterval)
-            print(results.count)
-            if results.count > 0 {
-                let match = results[0] as! NSManagedObject
-                destination.species = (match.valueForKey("species") as? String)!
-                destination.long = (match.valueForKey("loc_long") as? Double)!
-                destination.lat = (match.valueForKey("loc_lat") as? Double)!
-                destination.date = (match.valueForKey("date") as? NSDate)!
-                destination.length = (match.valueForKey("length") as? Double)!
-                destination.weight = (match.valueForKey("weight") as? Double)!
-                destination.notes = (match.valueForKey("notes") as? String)!
-                destination.time = timeInterval
-            } else {
+            let pred = NSPredicate(format: "(time_stamp = %@)", timeInterval )
+            request.predicate = pred
+        
+            do {
+                var results = try managedObjectContext.executeFetchRequest(request)
+                print(timeInterval)
+                print(results.count)
+                if results.count > 0 {
+                    let match = results[0] as! NSManagedObject
+                    destination.species = (match.valueForKey("species") as? String)!
+                    destination.long = (match.valueForKey("loc_long") as? Double)!
+                    destination.lat = (match.valueForKey("loc_lat") as? Double)!
+                    destination.date = (match.valueForKey("date") as? NSDate)!
+                    destination.length = (match.valueForKey("fish_length") as? Double)!
+                    destination.weight = (match.valueForKey("weight") as? Double)!
+                    destination.notes = (match.valueForKey("notes") as? String)!
+                    destination.time = timeInterval
+                } else {
                 
+                }
+            } catch let error as NSError {
+                print(error.localizedFailureReason)
+                print("there was an error accessing the fish info")
             }
-        } catch let error as NSError {
-            print(error.localizedFailureReason)
-            print("there was an error accessing the fish info")
+        }
+        else
+        {
+            let destination = segue.destinationViewController as! FishTableViewController
+            
+            destination.date = date
         }
     }
     
