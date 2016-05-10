@@ -48,9 +48,24 @@ class TripTableViewController: UITableViewController{
             
             
                             }
-            
-                        }else{
                             
+                            
+                            
+//                            for var row in results{
+//                                print("\(row)")
+//                                tripRows.append(row)
+//                                if let entryDate = row.date! {
+//                                    TripLabels.append(entryDate)
+//                                    print(String("hi we made it here" + String(entryDate)))
+//                                }else{
+//                                    print("empty date in row")
+//                                }
+//            
+//            
+//                            }
+//            
+//                        }else{
+//                            
                         }
                     } catch let error as NSError{
                         
@@ -82,7 +97,6 @@ class TripTableViewController: UITableViewController{
                 let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
        
                 let row = indexPath.row
-                //if let cellDate = cell.cellDate {
                     cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                     cell.cellDate.text = String(TripLabels[row])
                // }else{

@@ -15,7 +15,7 @@ import CoreData
 extension Fish {
 
     @NSManaged var date: NSDate?
-    @NSManaged var length: NSNumber?
+    @NSManaged var fish_length: NSNumber?
     @NSManaged var loc_lat: NSNumber?
     @NSManaged var loc_long: NSNumber?
     @NSManaged var notes: String?
