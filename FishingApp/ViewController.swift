@@ -16,6 +16,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     @IBOutlet weak var Visibility: UILabel!
+    @IBOutlet weak var NewTrip: UIButton!
     @IBOutlet weak var Temp: UILabel!
     @IBOutlet weak var WindSpeed: UILabel!
     @IBOutlet weak var Weather: UILabel!
@@ -164,9 +165,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (sender === NewTrip) {
+        
         let destination = segue.destinationViewController as! ViewController2
-        
-        
         // fetch information from core data and pass it to the next view
         let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
         let request = NSFetchRequest()
@@ -190,6 +192,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         } catch let error as NSError {
             print(error.localizedFailureReason)
+        }
+            
         }
     
         
