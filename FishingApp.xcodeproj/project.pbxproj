@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82616D4A1CE2702A00DC4023 /* FishTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82616D491CE2702A00DC4023 /* FishTableCellView.swift */; };
 		826440EE1CD2B6500013D8AC /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826440ED1CD2B6500013D8AC /* TripTableViewController.swift */; };
 		826440F01CD2B6710013D8AC /* TripTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826440EF1CD2B6710013D8AC /* TripTableCellView.swift */; };
 		82C9E08A1CC9827400C48EEE /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C9E0881CC9827400C48EEE /* Trip+CoreDataProperties.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82616D491CE2702A00DC4023 /* FishTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FishTableCellView.swift; sourceTree = "<group>"; };
 		826440ED1CD2B6500013D8AC /* TripTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
 		826440EF1CD2B6710013D8AC /* TripTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableCellView.swift; sourceTree = "<group>"; };
 		82C9E0881CC9827400C48EEE /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				D3E5DBB21CC04380009438CC /* FishingApp.xcdatamodeld */,
 				826440ED1CD2B6500013D8AC /* TripTableViewController.swift */,
 				84714A301CE1206100D51472 /* FishTableViewController.swift */,
+				82616D491CE2702A00DC4023 /* FishTableCellView.swift */,
 				826440EF1CD2B6710013D8AC /* TripTableCellView.swift */,
 			);
 			path = FishingApp;
@@ -235,6 +238,7 @@
 				84714A311CE1206100D51472 /* FishTableViewController.swift in Sources */,
 				826440F01CD2B6710013D8AC /* TripTableCellView.swift in Sources */,
 				D3E5DBAE1CC04380009438CC /* ViewController.swift in Sources */,
+				82616D4A1CE2702A00DC4023 /* FishTableCellView.swift in Sources */,
 				D31B12F01CDD1BDC00A8C31D /* Fish.swift in Sources */,
 				82C9E08B1CC9827400C48EEE /* Trip.swift in Sources */,
 				826440EE1CD2B6500013D8AC /* TripTableViewController.swift in Sources */,

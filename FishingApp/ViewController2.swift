@@ -120,7 +120,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         }
         fish.loc_lat = tempLat
         fish.loc_long = temLong
-        fish.length = 0.75
+        fish.fish_length = 0.75
         fish.weight = 0.25
         fish.species = "Enter the Species"
         fish.time_stamp = timeInterval

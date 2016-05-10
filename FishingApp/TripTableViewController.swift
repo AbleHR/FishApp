@@ -33,23 +33,34 @@ class TripTableViewController: UITableViewController {
         
         do{
                         var results = try managedObjectContext.executeFetchRequest(request)
-            
-                        if results.count > 0 {
-            
-                            for var row in results  {
-                                tripRows.append(row)
-                                if let entryDate = row.date! {
-                                    TripLabels.append(entryDate)
-                                    print(String("hi we made it here" + String(entryDate)))
-                                }else{
-                                    print("empty date in row")
-                                }
-            
-            
+                        print("\(results.count)")
+                            if results.count > 0 {
+//            
+                            for rowcount in 0...results.count-1{
+                                let match = results[rowcount] as! NSManagedObject
+                          
+                                TripLabels.append(match.valueForKey("date") as! NSDate)
+                                print(String("hi we made it here" + String(match.valueForKey("date"))))
+                                
                             }
-            
-                        }else{
                             
+                            
+                            
+//                            for var row in results{
+//                                print("\(row)")
+//                                tripRows.append(row)
+//                                if let entryDate = row.date! {
+//                                    TripLabels.append(entryDate)
+//                                    print(String("hi we made it here" + String(entryDate)))
+//                                }else{
+//                                    print("empty date in row")
+//                                }
+//            
+//            
+//                            }
+//            
+//                        }else{
+//                            
                         }
                     } catch let error as NSError{
                         
@@ -76,13 +87,10 @@ class TripTableViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
        
                 let row = indexPath.row
-                //if let cellDate = cell.cellDate {
                     cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
                     cell.cellDate.text = String(TripLabels[row])
                     print("celldate is here")
-               // }else{
-                //    print("no cell")
-               // }
+               
                 
                 
                 return cell
