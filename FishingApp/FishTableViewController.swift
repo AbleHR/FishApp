@@ -48,6 +48,7 @@ class FishTableViewController: UITableViewController {
             if results.count > 0 {
                 
                 for rowcount in 0...results.count-1{
+                
                     let match = results[rowcount] as! NSManagedObject
                     
                     fishLabels.append(match.valueForKey("time_stamp") as! NSDate)
@@ -115,8 +116,7 @@ class FishTableViewController: UITableViewController {
         
         cell.fishWeight.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         cell.fishWeight.text = String(format: "%.1f", fishWeight[row] * 100) + " oz"
-        
-        
+
         
         return cell
         

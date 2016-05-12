@@ -36,8 +36,9 @@ class TripTableViewController: UITableViewController{
         do{
                         var results = try managedObjectContext.executeFetchRequest(request)
                             if results.count > 0 {
-//            
-                            for rowcount in 0...results.count-1{
+                            let limit = results.count-1
+                            //for rowcount in 0...results.count-1{
+                                for rowcount in limit.stride(through: 0, by: -1){
                                 let match = results[rowcount] as! NSManagedObject
                           
                                 TripLabels.append(match.valueForKey("date") as! NSDate)
@@ -92,10 +93,19 @@ class TripTableViewController: UITableViewController{
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TripTableCell", forIndexPath: indexPath) as! TripTableCellView
-       
+        
         let row = indexPath.row
+        let count = TripLabels.count
+        
+        let currentDate = String(String(TripLabels[row]).characters.prefix(10))
+//        let cal:NSCalendar = NSCalendar.currentCalendar()
+//        let comp = cal.component([.Day , .Month , .Year], fromDate: currentDate)
+//        let cellDay = comp.day
             cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-            cell.cellDate.text = String(TripLabels[row])
+            cell.cellDate.text = currentDate
+        
+            cell.cellNumber.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+            cell.cellNumber.text = "Trip " + String(count - row)
         
         return cell
                 
