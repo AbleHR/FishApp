@@ -25,6 +25,7 @@ class ViewController3: UIViewController {
     @IBOutlet weak var saveNotesButton: UIButton!
     @IBOutlet weak var speciesTextfield: UITextField!
     
+    @IBOutlet weak var Back3: UIButton!
     var species :String = ""
     var lat :Double = 0
     var long :Double = 0
@@ -101,7 +102,7 @@ class ViewController3: UIViewController {
         
     }
 
-    @IBAction func saveNotes(sender: AnyObject) {
+    @IBAction func saveNotes(sender: UIButton) {
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
         
         let request = NSFetchRequest()
@@ -132,7 +133,7 @@ class ViewController3: UIViewController {
             if var results = try managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
                 if results.count != 0 {
                     let managedObject = results[0]
-                    managedObject.setValue(notesText.text, forKey: "notes")
+                    managedObject.setValue(sender.text, forKey: "species")
                     try managedObjectContext.save()
                 }
             }
@@ -161,4 +162,6 @@ class ViewController3: UIViewController {
         }
         weightValueLabel.text = String(format: "%.1f", sender.value * 100) + " oz"
     }
+    
+
 }

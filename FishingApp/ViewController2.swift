@@ -17,6 +17,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
+    @IBOutlet weak var Back2: UIButton!
     @IBOutlet weak var newFishButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -104,7 +105,10 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
                 print("there was an error accessing the fish info")
             }
         }
-        else
+        else if (sender === Back2) {
+            
+        }else
+            
         {
             let destination = segue.destinationViewController as! FishTableViewController
             
@@ -132,12 +136,12 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         }
         fish.loc_lat = tempLat
         fish.loc_long = temLong
-        fish.fish_length = 0.75
-        fish.weight = 0.25
-        fish.species = "Enter the Species"
+        fish.fish_length = 0.0
+        fish.weight = 0.0
+        fish.species = "Species"
         fish.time_stamp = timeInterval
         fish.photo = ""
-        fish.notes = "Take some notes"
+        fish.notes = "Notes"
         fish.date = date
         
         print("View 2 create fish \(String(date))")

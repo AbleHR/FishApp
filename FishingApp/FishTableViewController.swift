@@ -107,14 +107,14 @@ class FishTableViewController: UITableViewController {
         let row = indexPath.row
         
         cell.fishSpecies.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        cell.fishSpecies.text = String(fishLabels[row])
+        cell.fishSpecies.text = fishSpecies[row]
 
         
         cell.fishLength.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        cell.fishLength.text = String(fishLength[row])
+        cell.fishLength.text = String(format: "%.1f", fishLength[row] * 100) + " in"
         
         cell.fishWeight.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        cell.fishWeight.text = String(fishWeight[row])
+        cell.fishWeight.text = String(format: "%.1f", fishWeight[row] * 100) + " oz"
         
         
         

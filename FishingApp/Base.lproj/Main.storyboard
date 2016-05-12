@@ -233,9 +233,23 @@
                                     <rect key="frame" x="20" y="397" width="360" height="370"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="go5-jd-X9s" kind="embed" id="iVk-qp-Ml5"/>
+                                    <segue destination="go5-jd-X9s" kind="embed" identifier="SequetoTable2" id="iVk-qp-Ml5"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beU-v1-1vC">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.050989389689999998" green="0.114103778" blue="0.69059738010000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.97151480290000003" green="0.96124835760000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="20" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="jky-6K-soU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.99607843139999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -243,6 +257,7 @@
                                 <exclude reference="Ac6-gi-Y0K"/>
                                 <exclude reference="3Td-Pm-MI7"/>
                                 <exclude reference="nnA-Dj-MCY"/>
+                                <exclude reference="beU-v1-1vC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -250,10 +265,12 @@
                                 <include reference="Ac6-gi-Y0K"/>
                                 <include reference="3Td-Pm-MI7"/>
                                 <include reference="nnA-Dj-MCY"/>
+                                <include reference="beU-v1-1vC"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="Back2" destination="beU-v1-1vC" id="p3l-8g-V23"/>
                         <outlet property="mapView" destination="3Td-Pm-MI7" id="t9q-PZ-na9"/>
                         <outlet property="newFishButton" destination="Ac6-gi-Y0K" id="tKF-wz-5Xx"/>
                     </connections>
@@ -341,7 +358,7 @@
                                     <rect key="frame" x="95" y="315" width="285" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="saveSpecies:" destination="i7r-VL-cPR" eventType="editingDidEnd" id="cko-Gs-oEe"/>
+                                    <action selector="saveSpecies:" destination="i7r-VL-cPR" eventType="editingChanged" id="5Qh-sB-u1W"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Species" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggI-Oa-vKx">
@@ -392,6 +409,20 @@
                                     <rect key="frame" x="311" y="430" width="69" height="21"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmW-Rk-S5g">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.050989389689999998" green="0.114103778" blue="0.69059738010000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.97151480290000003" green="0.96124835760000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="20" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="ooL-xo-Jr8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -407,6 +438,7 @@
                                 <exclude reference="3jW-9C-wCN"/>
                                 <exclude reference="KgP-Dd-mAc"/>
                                 <exclude reference="7kF-th-TRt"/>
+                                <exclude reference="wmW-Rk-S5g"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -426,10 +458,12 @@
                                 <include reference="3jW-9C-wCN"/>
                                 <include reference="KgP-Dd-mAc"/>
                                 <include reference="7kF-th-TRt"/>
+                                <include reference="wmW-Rk-S5g"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="Back3" destination="wmW-Rk-S5g" id="rMd-2c-qXa"/>
                         <outlet property="fishLocation" destination="r2a-jT-TCt" id="kHQ-Dr-ykL"/>
                         <outlet property="lengthSlider" destination="cjx-be-b1b" id="9t6-gj-t7M"/>
                         <outlet property="lengthValueLabel" destination="KgP-Dd-mAc" id="lj9-Eq-Xhl"/>
@@ -475,7 +509,6 @@
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0fQ-vt-mrO">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
                             <connections>
                                 <segue destination="dXq-xH-BiC" kind="presentation" identifier="SequetoView2" id="y6V-hd-i1t"/>
                             </connections>
@@ -609,7 +642,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ooL-xo-Jr8"/>
+        <segue reference="zZv-Y8-vZp"/>
         <segue reference="y6V-hd-i1t"/>
-        <segue reference="a9R-6B-SBe"/>
     </inferredMetricsTieBreakers>
 </document>
