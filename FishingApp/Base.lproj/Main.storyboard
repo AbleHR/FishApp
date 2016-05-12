@@ -22,9 +22,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="83"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="4" y="72" width="360" height="21"/>
                                 </variation>
@@ -70,9 +67,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="155" width="76" height="103"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="220" y="181" width="180" height="38"/>
                                 </variation>
@@ -82,9 +76,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="155" width="91" height="103"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="220" y="232" width="180" height="37"/>
                                 </variation>
@@ -94,18 +85,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="282" y="155" width="118" height="103"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="220" y="323" width="180" height="37"/>
                                 </variation>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ZoP-ON-ZwR">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="304" width="400" height="296"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="433" width="360" height="302"/>
                                 </variation>
@@ -121,9 +106,6 @@
                                 <state key="normal" title="New Trip Button">
                                     <color key="titleColor" red="0.97151480291954506" green="0.9612483575590608" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="266" width="400" height="30"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="377" width="360" height="45"/>
                                 </variation>
@@ -137,9 +119,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="183" y="155" width="91" height="103"/>
-                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="220" y="277" width="180" height="38"/>
                                 </variation>
@@ -223,9 +202,6 @@
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="0.0" width="360" height="360"/>
                                 </variation>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="NGw-5E-KEP" appends="YES" id="U7C-jN-XEf"/>
-                                </connections>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnA-Dj-MCY">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -276,11 +252,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c27-Qm-IH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="NGw-5E-KEP">
-                    <connections>
-                        <action selector="getLongPressCoordinates:" destination="dXq-xH-BiC" id="788-9f-p8Z"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="171" y="-1799.25"/>
         </scene>
@@ -372,9 +343,13 @@
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="r2a-jT-TCt">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <gestureRecognizers/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="20" width="360" height="275"/>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="kxR-oL-rZ5" appends="YES" id="1TF-ah-B6q"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jW-9C-wCN">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -475,6 +450,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za3-0f-srY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kxR-oL-rZ5">
+                    <connections>
+                        <action selector="getLongPressCoordinates:" destination="i7r-VL-cPR" id="VSD-8o-p8k"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="790.5" y="-1133.25"/>
         </scene>
@@ -507,7 +487,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.10884906649999999" green="0.33333333329999998" blue="0.23332228090000001" alpha="1" colorSpace="calibratedRGB"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0fQ-vt-mrO">
-                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <rect key="frame" x="0.0" y="72" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
                                 <segue destination="dXq-xH-BiC" kind="presentation" identifier="SequetoView2" id="y6V-hd-i1t"/>
@@ -567,7 +547,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uK4-9o-sYL">
-                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <rect key="frame" x="0.0" y="72" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
                                 <segue destination="i7r-VL-cPR" kind="presentation" identifier="SeguetoView3" id="a9R-6B-SBe"/>

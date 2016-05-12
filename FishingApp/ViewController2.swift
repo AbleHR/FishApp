@@ -38,7 +38,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         mapView.region.center.longitude = long
         mapView.removeAnnotations(mapView.annotations)
         let center = mapView.centerCoordinate
-        let region = MKCoordinateRegionMakeWithDistance(center, 2000, 2000)
+        let region = MKCoordinateRegionMakeWithDistance(center, 1000, 1000)
         // set region to current region
         mapView.setRegion(region, animated: true)
         
@@ -53,9 +53,15 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         
         do {
             var results = try managedObjectContext.executeFetchRequest(request)
+            print("Number of fish to pin \(results.count)")
             if results.count > 0 {
                 for index in 0...results.count - 1 {
                     let match = results[index] as! NSManagedObject
+                    let fishPin = MKPointAnnotation()
+                    fishPin.coordinate.latitude = (match.valueForKey("loc_lat") as? Double)!
+                    fishPin.coordinate.longitude = (match.valueForKey("loc_long") as? Double)!
+                    fishPin.title = (match.valueForKey("species") as? String)!
+                    self.mapView.addAnnotation(fishPin)
                 }
             } else {
                 

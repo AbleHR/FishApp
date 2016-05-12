@@ -35,17 +35,11 @@ class ViewController3: UIViewController {
     var time :NSDate = NSDate()
     var notes :String = ""
     
+    let fishPin = MKPointAnnotation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
-        print("view 3 didload \(String(date))")
-        print("view 3 didload length \(length))")
-        print("view 3 didload weight \(weight))")
-        
-        
-        
-        
         // initialize the input fields
         lengthSlider.value = Float(length)
         weightSlider.value = Float(weight)
@@ -66,7 +60,7 @@ class ViewController3: UIViewController {
         // set region to current region
         fishLocation.setRegion(region, animated: true)
         
-        let fishPin = MKPointAnnotation()
+        
         fishPin.coordinate.latitude = lat
         fishPin.coordinate.longitude = long
         fishPin.title = species
@@ -161,6 +155,39 @@ class ViewController3: UIViewController {
             print(error.localizedFailureReason)
         }
         weightValueLabel.text = String(format: "%.1f", sender.value * 100) + " oz"
+    }
+    
+    @IBAction func getLongPressCoordinates(sender: UILongPressGestureRecognizer) {
+        if sender.state != UIGestureRecognizerState.Began { return }
+        let touchLocation = sender.locationInView(fishLocation)
+        let locationCoordinate = fishLocation.convertPoint(touchLocation, toCoordinateFromView: fishLocation)
+       // print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
+        
+        let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
+        
+        let request = NSFetchRequest()
+        request.entity = entityDescription
+        request.predicate = NSPredicate(format: "time_stamp = %@", time)
+        
+        do {
+            if var results = try managedObjectContext.executeFetchRequest(request) as? [NSManagedObject] {
+                if results.count != 0 {
+                    let managedObject = results[0]
+                    managedObject.setValue(locationCoordinate.latitude, forKey: "loc_lat")
+                    managedObject.setValue(locationCoordinate.longitude, forKey: "loc_long")
+                    try managedObjectContext.save()
+                }
+            }
+        } catch let error as NSError {
+            print(error.localizedFailureReason)
+        }
+        
+        fishPin.coordinate.latitude = locationCoordinate.latitude
+        fishPin.coordinate.longitude = locationCoordinate.longitude
+        fishLocation.region.center.latitude = locationCoordinate.latitude
+        fishLocation.region.center.longitude = locationCoordinate.longitude
+
+        
     }
     
 
