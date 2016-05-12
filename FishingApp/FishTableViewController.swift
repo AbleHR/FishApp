@@ -21,10 +21,13 @@ class FishTableViewController: UITableViewController {
     var fishWeight = [Double]()
     var fishRows = [AnyObject]()
     var date :NSDate = NSDate()
+    var targetFish: NSDate = NSDate()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        
+        print("FishTable didLoad \(String(date))")
         
         //self.tableView.registerClass(TripTableCellView.self, forCellReuseIdentifier: "TripTableCell")
         // tableView.delegate = self
@@ -34,7 +37,7 @@ class FishTableViewController: UITableViewController {
         let request = NSFetchRequest()
         request.entity = entityDescription
         
-        let pred = NSPredicate(format: "(date = %@)", date )
+       let pred = NSPredicate(format: "(date = %@)", date )
         request.predicate = pred
         // NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableData:", name: "reload", object: nil)
         
@@ -47,17 +50,13 @@ class FishTableViewController: UITableViewController {
                 for rowcount in 0...results.count-1{
                     let match = results[rowcount] as! NSManagedObject
                     
-                    fishLabels.append(match.valueForKey("date") as! NSDate)
-                    print(String("hi we made it here" + String(match.valueForKey("date"))))
+                    fishLabels.append(match.valueForKey("time_stamp") as! NSDate)
                     
                     fishSpecies.append(match.valueForKey("species") as! String)
-                    print(String("hi we made it to species" + String(match.valueForKey("species"))))
 
                     fishLength.append(match.valueForKey("fish_length") as! Double)
-                    print(String("hi we made it to fish_length" + String(match.valueForKey("fish_length"))))
                     
                     fishWeight.append(match.valueForKey("weight") as! Double)
-                    print(String("hi we made it to weight" + String(match.valueForKey("weight"))))
                     
                     
                     
@@ -83,6 +82,13 @@ class FishTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 20
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        targetFish = fishLabels[indexPath.indexAtPosition(1)]
+        print("didsellectrow \(String(targetFish))")
+        self.performSegueWithIdentifier("SeguetoView3", sender: self)
+        
+    }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
     }
@@ -92,7 +98,6 @@ class FishTableViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection
         section: Int) -> Int {
-            print("made it totableviewnumrowsinsection \(fishLabels.count)")
             return fishLabels.count
     }
     
@@ -102,15 +107,14 @@ class FishTableViewController: UITableViewController {
         let row = indexPath.row
         
         cell.fishSpecies.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        cell.fishSpecies.text = String(fishSpecies[row])
+        cell.fishSpecies.text = String(fishLabels[row])
+
         
         cell.fishLength.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         cell.fishLength.text = String(fishLength[row])
         
         cell.fishWeight.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         cell.fishWeight.text = String(fishWeight[row])
-        
-        print("end of cell creation")
         
         
         
@@ -119,6 +123,48 @@ class FishTableViewController: UITableViewController {
     }
     func reloadTableData(notification: NSNotification) {
         tableView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        let destination = segue.destinationViewController as! ViewController3
+        
+        if (sender === self) {
+        
+        print("fish table seque \(String(targetFish))")
+        // fetch information from core data and pass it to the next view
+        let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
+        let request = NSFetchRequest()
+        request.entity = entityDescription
+        
+        let pred = NSPredicate(format: "(time_stamp = %@)", targetFish )
+        request.predicate = pred
+        
+        do {
+            var results = try managedObjectContext.executeFetchRequest(request)
+            
+            
+            if results.count > 0 {
+                let match = results[0] as! NSManagedObject
+                destination.lat = (match.valueForKey("loc_lat") as? Double)!
+                destination.long = (match.valueForKey("loc_long") as? Double)!
+                destination.weight = (match.valueForKey("weight") as? Double)!
+                destination.length = (match.valueForKey("fish_length") as? Double)!
+                destination.species = (match.valueForKey("species") as? String)!
+                destination.notes = (match.valueForKey("notes") as? String)!
+                destination.time = targetFish
+                
+                print("Fish weight \(match.valueForKey("weight") as? Double)!)")
+                print("Fish length \(match.valueForKey("fish_length") as? Double)!)")
+            } else {
+                
+                
+            }
+            } catch let error as NSError {
+                print(error.localizedFailureReason)
+            }
+        } else {
+          
+        }
     }
     
 }

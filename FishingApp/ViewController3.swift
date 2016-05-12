@@ -38,14 +38,22 @@ class ViewController3: UIViewController {
         super.viewDidLoad()
         
 
+        print("view 3 didload \(String(date))")
+        print("view 3 didload length \(length))")
+        print("view 3 didload weight \(weight))")
+        
+        
+        
         
         // initialize the input fields
         lengthSlider.value = Float(length)
         weightSlider.value = Float(weight)
         notesText.text = notes
         speciesTextfield.text = species
+
         lengthValueLabel.text = String(format: "%.1f", length * 100) + " in"
         weightValueLabel.text = String(format: "%.1f", weight * 100) + " oz"
+
         
         // map stuff
         fishLocation.mapType = MKMapType.Hybrid

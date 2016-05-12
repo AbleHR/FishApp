@@ -27,6 +27,9 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("view 2 didload \(String(date))")
+        
         /// show users location
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType.Hybrid
@@ -37,6 +40,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegionMakeWithDistance(center, 2000, 2000)
         // set region to current region
         mapView.setRegion(region, animated: true)
+        
 
         
         /// TODO get all the fish for the trip so we can display them in the table view
@@ -48,9 +52,8 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         
         do {
             var results = try managedObjectContext.executeFetchRequest(request)
-            print("The number of fish \(results.count)")
             if results.count > 0 {
-                for index in 0...results.count {
+                for index in 0...results.count - 1 {
                     let match = results[index] as! NSManagedObject
                 }
             } else {
@@ -69,6 +72,8 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         
         if(sender === newFishButton) {
+            
+            print("View2 seque \(String(date))")
         
             let destination = segue.destinationViewController as! ViewController3
         
@@ -81,8 +86,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         
             do {
                 var results = try managedObjectContext.executeFetchRequest(request)
-                print(timeInterval)
-                print(results.count)
                 if results.count > 0 {
                     let match = results[0] as! NSManagedObject
                     destination.species = (match.valueForKey("species") as? String)!
@@ -106,6 +109,7 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
             let destination = segue.destinationViewController as! FishTableViewController
             
             destination.date = date
+            print("view 2 segue else \(String(date))")
         }
     }
     
@@ -118,7 +122,6 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         let entityDescription = NSEntityDescription.entityForName("Fish", inManagedObjectContext: managedObjectContext)
         let fish = Fish(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext)
         
-        fish.date = date
         
         var timeout = 0
         while (tempLat == nil && temLong == nil && timeout < 200000){
@@ -135,11 +138,12 @@ class ViewController2: UIViewController, CLLocationManagerDelegate {
         fish.time_stamp = timeInterval
         fish.photo = ""
         fish.notes = "Take some notes"
+        fish.date = date
+        
+        print("View 2 create fish \(String(date))")
         
         do {
             try managedObjectContext.save()
-            print("fish created")
-            print(timeInterval)
             
         } catch let error as NSError {
             print("errrrr")

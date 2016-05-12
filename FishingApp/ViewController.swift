@@ -27,6 +27,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var weatherJson: NSString = ""
     var timeInterval = NSDate().timeIntervalSince1970 - 500
     var date: NSDate = NSDate()
+    var lat: Double = 0
+    var long: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +67,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         trip.date = date
         trip.temp = Temp.text!
-        print(String(date) + " date from view 1")
         trip.visibility_mi = Visibility.text!
         trip.wind_mph = WindSpeed.text!
         trip.weather = Weather.text!
@@ -74,11 +75,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         trip.loc_lat = tempLat
         trip.loc_long = tempLong
+        lat = tempLat!
+        long = tempLong!
 
         
         do{
             try managedObjectContext.save()
-            print("Successfully saved the trip")
         }catch let error as NSError {
             print("Failed Save with error \(error)")
         }
@@ -164,31 +166,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if (sender === NewTrip) {
         
             let destination = segue.destinationViewController as! ViewController2
+            
+            destination.date = date
+            print("view seque date \(String(date))")
+
+            destination.lat = lat
+            destination.long = long
+            
             // fetch information from core data and pass it to the next view
-            let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
-            let request = NSFetchRequest()
-            request.entity = entityDescription
-            
-            let pred = NSPredicate(format: "(date = %@)", date )
-            request.predicate = pred
-        
-            do {
-                var results = try managedObjectContext.executeFetchRequest(request)
-            
-                print(results.count)
-            
-                if results.count > 0 {
-                    let match = results[0] as! NSManagedObject
-                        destination.lat = (match.valueForKey("loc_lat") as? Double)!
-                        destination.long = (match.valueForKey("loc_long") as? Double)!
-                        destination.date = (match.valueForKey("date") as? NSDate)!
-                    print("everything added in view1")
-                } else {
-                    print("Nothing added to coreData in View1")
-                }
-            } catch let error as NSError {
-                print(error.localizedFailureReason)
-            }
+  //          let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
+ //           let request = NSFetchRequest()
+ //           request.entity = entityDescription
+//            
+//            let pred = NSPredicate(format: "(date = %@)", date )
+//            request.predicate = pred
+//        
+//            do {
+//                var results = try managedObjectContext.executeFetchRequest(request)
+//            
+//                print(results.count)
+//            
+//                if results.count > 0 {
+//                    let match = results[0] as! NSManagedObject
+//                        destination.lat = (match.valueForKey("loc_lat") as? Double)!
+//                        destination.long = (match.valueForKey("loc_long") as? Double)!
+//                        destination.date = (match.valueForKey("date") as? NSDate)!
+//                } else {
+//                    print("Nothing added to coreData in View1")
+//                }
+//            } catch let error as NSError {
+//                print(error.localizedFailureReason)
+//            }
             
         } // end if
     

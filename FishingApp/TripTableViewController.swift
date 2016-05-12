@@ -35,14 +35,12 @@ class TripTableViewController: UITableViewController{
         
         do{
                         var results = try managedObjectContext.executeFetchRequest(request)
-                        print("\(results.count)")
                             if results.count > 0 {
 //            
                             for rowcount in 0...results.count-1{
                                 let match = results[rowcount] as! NSManagedObject
                           
                                 TripLabels.append(match.valueForKey("date") as! NSDate)
-                                print(String("hi we made it here" + String(match.valueForKey("date"))))
                                 
                             }
                             
@@ -74,9 +72,11 @@ class TripTableViewController: UITableViewController{
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         targetTrip = TripLabels[indexPath.indexAtPosition(1)]
-        self.performSegueWithIdentifier("SequetoView2", sender: self)
-        
+        print("didsellectrow \(String(targetTrip))")
+         self.performSegueWithIdentifier("SequetoView2", sender: self)
+
     }
+    
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44
@@ -96,7 +96,7 @@ class TripTableViewController: UITableViewController{
         let row = indexPath.row
             cell.cellDate.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             cell.cellDate.text = String(TripLabels[row])
-                
+        
         return cell
                 
     }
@@ -106,9 +106,11 @@ class TripTableViewController: UITableViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         
-        if(sender === tableView) {
         
-            print(String(targetTrip) + "In tripTable segue")
+        
+        print("trip table seque \(String(targetTrip))")
+        
+        //print(String(targetTrip) + "date from tableView")
             let destination = segue.destinationViewController as! ViewController2
             // fetch information from core data and pass it to the next view
             let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: managedObjectContext)
@@ -121,22 +123,23 @@ class TripTableViewController: UITableViewController{
             do {
                 var results = try managedObjectContext.executeFetchRequest(request)
             
-                print(results.count)
             
                 if results.count > 0 {
                     let match = results[0] as! NSManagedObject
                     destination.lat = (match.valueForKey("loc_lat") as? Double)!
                     destination.long = (match.valueForKey("loc_long") as? Double)!
-                    destination.date = (match.valueForKey("date") as? NSDate)!
-                    print(String((match.valueForKey("date") as? NSDate)!) + "date from tableView")
+                    destination.date = targetTrip
                 } else {
+                    
                 
                 }
             } catch let error as NSError {
                 print(error.localizedFailureReason)
             }
 
+
+            
+            
         }
-    } // end if
     
 }
